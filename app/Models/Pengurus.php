@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\ManagesFileUploads;
 
 class Pengurus extends Model
 {
     /** @use HasFactory<\Database\Factories\PengurusFactory> */
-    use HasFactory;
+    use HasFactory , ManagesFileUploads;
 
     /**
      * The attributes that are mass assignable.
@@ -21,4 +22,6 @@ class Pengurus extends Model
         'foto',
         'biografi_singkat',
     ];
+
+    protected $fileFields = ['foto'];
 }
