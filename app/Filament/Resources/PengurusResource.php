@@ -53,7 +53,6 @@ class PengurusResource extends Resource
                         ->required(),
                 FileUpload::make('foto')
                     ->image()
-                    ->disk('public')
                     ->directory('pengurus')
             ]);
     }
@@ -100,23 +99,6 @@ class PengurusResource extends Resource
             'index' => Pages\ListPenguruses::route('/'),
             'create' => Pages\CreatePengurus::route('/create'),
             'edit' => Pages\EditPengurus::route('/{record}/edit'),
-        ];
-    }
-
-    /**
-     * Helper untuk mendapatkan opsi jabatan.
-     *
-     * @return array
-     */
-    private static function getJabatanOptions(): array
-    {
-        return [
-            'Ketua Umum' => 'Ketua Umum',
-            'Wakil Ketua' => 'Wakil Ketua',
-            'Sekretaris' => 'Sekretaris',
-            'Bendahara' => 'Bendahara',
-            'Kepala Sekolah SMP' => 'Kepala Sekolah SMP',
-            'Kepala Sekolah SMA' => 'Kepala Sekolah SMA',
         ];
     }
 }
