@@ -18,6 +18,10 @@ class BeritaResource extends Resource
     protected static ?string $model = Berita::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    
+    protected static ?string $pluralModelLabel = 'Berita';
+    protected static ?string $modelLabel = 'Berita';
+    protected static ?string $navigationLabel = 'Berita';
 
     public static function form(Form $form): Form
     {
@@ -25,10 +29,21 @@ class BeritaResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('judul')
                     ->required(),
-                Forms\Components\Textarea::make('isi')
+                Forms\Components\TextInput::make('slug')
+                    ->required(),
+                Forms\Components\RichEditor::make('isi_konten')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('foto'),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'published' => 'Published',
+                    ])
+                    ->default('draft')
+                    ->required(),
+                Forms\Components\FileUpload::make('gambar_utama')
+                    ->image()
+                    ->directory('berita'),
             ]);
     }
 

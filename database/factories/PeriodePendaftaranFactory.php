@@ -4,20 +4,15 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PeriodePendaftaran>
- */
 class PeriodePendaftaranFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'tahun_ajaran' => '2025/2026',
+            'tanggal_mulai' => now()->subMonth(),
+            'tanggal_selesai' => now()->addMonth(),
+            'status' => true,
         ];
     }
 }

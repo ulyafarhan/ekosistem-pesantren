@@ -9,4 +9,7 @@ class TokohSejarah extends Model
 {
     /** @use HasFactory<\Database\Factories\TokohSejarahFactory> */
     use HasFactory;
+
+
+    protected $fillable = ['nama_lengkap', 'periode_jabatan', 'foto', 'kisah_historis'];
 }

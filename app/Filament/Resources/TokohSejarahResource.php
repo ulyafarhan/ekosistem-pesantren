@@ -19,6 +19,10 @@ class TokohSejarahResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $pluralModelLabel = 'Tokoh Sejarah';
+    protected static ?string $modelLabel = 'Tokoh Sejarah';
+    protected static ?string $navigationLabel = 'Tokoh Sejarah';
+
     public static function form(Form $form): Form
     {
         return $form

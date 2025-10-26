@@ -9,4 +9,7 @@ class Galeri extends Model
 {
     /** @use HasFactory<\Database\Factories\GaleriFactory> */
     use HasFactory;
+
+
+    protected $fillable = ['judul', 'deskripsi', 'file_media', 'tipe'];
 }

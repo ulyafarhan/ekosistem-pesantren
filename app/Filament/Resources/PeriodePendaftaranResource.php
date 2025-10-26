@@ -19,6 +19,10 @@ class PeriodePendaftaranResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $pluralModelLabel = 'Periode Pendaftaran';
+    protected static ?string $modelLabel = 'Periode Pendaftaran';
+    protected static ?string $navigationLabel = 'Periode Pendaftaran';
+
     public static function form(Form $form): Form
     {
         return $form

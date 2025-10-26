@@ -4,20 +4,14 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TokohSejarah>
- */
 class TokohSejarahFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'nama_lengkap' => $this->faker->name(),
+            'periode_jabatan' => '1990 - 2000',
+            'kisah_historis' => $this->faker->paragraph(),
         ];
     }
 }

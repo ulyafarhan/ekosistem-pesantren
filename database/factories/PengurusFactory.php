@@ -17,7 +17,9 @@ class PengurusFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama_lengkap' => $this->faker->name(),
+            'jabatan' => $this->faker->randomElement(['Ketua Umum', 'Wakil Ketua', 'Sekretaris', 'Bendahara', 'Kepala Sekolah SMP', 'Kepala Sekolah SMA']),
+            'biografi_singkat' => $this->faker->paragraph(),
         ];
     }
 }

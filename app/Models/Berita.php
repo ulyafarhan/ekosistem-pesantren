@@ -9,4 +9,7 @@ class Berita extends Model
 {
     /** @use HasFactory<\Database\Factories\BeritaFactory> */
     use HasFactory;
+
+
+    protected $fillable = ['judul', 'slug', 'gambar_utama', 'isi_konten', 'status'];
 }

@@ -21,6 +21,10 @@ class PengurusResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $pluralModelLabel = 'Pengurus';
+    protected static ?string $modelLabel = 'Pengurus';
+    protected static ?string $navigationLabel = 'Pengurus';
+
     /**
      * Define the form schema for the resource.
      *
@@ -31,25 +35,26 @@ class PengurusResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('nama_lengkap')
+                Forms\Components\TextInput::make('nama_lengkap')
                     ->required(),
-
-                Select::make('jabatan')
+                Forms\Components\Textarea::make('biografi_singkat')
+                    ->nullable()
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('jabatan')
                     ->options([
-                        'Ketua Umum' => 'Pimpinan Pusat',
-                        'Wakil Ketua' => 'Pimpinan Pesantren',
-                        'Sekretaris' => 'Sekretaris Umum',
-                        'Bendahara' => 'Bendahara Umum',
+                        'Ketua Umum' => 'Ketua Umum',
+                        'Wakil Ketua' => 'Wakil Ketua',
+                        'Sekretaris' => 'Sekretaris',
+                        'Bendahara' => 'Bendahara',
                         'Kepala Sekolah SMP' => 'Kepala Sekolah SMP',
                         'Kepala Sekolah SMA' => 'Kepala Sekolah SMA',
+                        'Lainnya'=> 'Pengurus Lainnya/ Ustadz',
                     ])
-                    ->required(),
-
+                        ->required(),
                 FileUpload::make('foto')
                     ->image()
                     ->disk('public')
                     ->directory('pengurus')
-                    ->required(),
             ]);
     }
 
@@ -64,7 +69,10 @@ class PengurusResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('foto')->circular(),
+                Tables\Columns\TextColumn::make('nama_lengkap')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('jabatan')->searchable()->sortable()->badge(),
+                Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -92,6 +100,23 @@ class PengurusResource extends Resource
             'index' => Pages\ListPenguruses::route('/'),
             'create' => Pages\CreatePengurus::route('/create'),
             'edit' => Pages\EditPengurus::route('/{record}/edit'),
+        ];
+    }
+
+    /**
+     * Helper untuk mendapatkan opsi jabatan.
+     *
+     * @return array
+     */
+    private static function getJabatanOptions(): array
+    {
+        return [
+            'Ketua Umum' => 'Ketua Umum',
+            'Wakil Ketua' => 'Wakil Ketua',
+            'Sekretaris' => 'Sekretaris',
+            'Bendahara' => 'Bendahara',
+            'Kepala Sekolah SMP' => 'Kepala Sekolah SMP',
+            'Kepala Sekolah SMA' => 'Kepala Sekolah SMA',
         ];
     }
 }
