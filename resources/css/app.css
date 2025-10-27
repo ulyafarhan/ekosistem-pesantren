@@ -10,3 +10,43 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Tokens */
+:root{
+  --brand:#2563eb; --brand-700:#1d4ed8; --ink:#0f172a; --muted:#64748b;
+}
+body{font-family:'Instrument Sans', ui-sans-serif, system-ui, sans-serif}
+
+/* Util */
+.shadow-soft{box-shadow:0 8px 24px rgba(15,23,42,.08)}
+.section-title{font-weight:800;font-size:clamp(1.25rem,1vw+1rem,1.75rem);color:#0f172a}
+.nav-link{color:#334155} .nav-link:hover{color:var(--brand-700)}
+.mobile-link{padding:.5rem .75rem;border-radius:.5rem;background:#f1f5f9} .mobile-link:hover{background:#e2e8f0}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.625rem 1rem;border-radius:.75rem;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;font-weight:600}
+.btn-primary:hover{filter:brightness(.95)}
+.btn-ghost{display:inline-flex;align-items:center;padding:.625rem 1rem;border-radius:.75rem;background:#eef2ff;color:#1d4ed8;font-weight:600}
+.btn-ghost:hover{background:#e0e7ff}
+.badge-glass{webkit-backdrop-filter:saturate(150%) blur(8px);background:rgba(255,255,255,.7);border:1px solid rgba(148,163,184,.35);padding:.5rem .75rem;border-radius:999px;font-weight:700;color:#0f172a;box-shadow:0 8px 24px rgba(2,6,23,.08)}
+.field{width:100%;padding:.625rem .75rem;border:1px solid #e2e8f0;border-radius:.75rem;background:#fff;color:#0f172a}
+.field:focus{outline:none;border-color:#93c5fd;box-shadow:0 0 0 4px rgba(147,197,253,.4)}
+
+/* Stats */
+.stat{display:grid;gap:.25rem}
+.stat-number{font-size:clamp(1.5rem,1.8vw,2.25rem);font-weight:800;color:#0f172a}
+.stat-label{font-size:.75rem;color:#64748b}
+.logo-pill{display:inline-flex;align-items:center;justify-content:center;padding:.5rem .75rem;border-radius:999px;border:1px solid #e2e8f0;background:#fff;color:#64748b}
+
+/* Katalog slider */
+.catalog-card{width:18rem;min-width:18rem;border:1px solid #e2e8f0;border-radius:1rem;background:#fff;padding:.75rem;box-shadow:0 4px 12px rgba(2,6,23,.06)}
+.slider-btn{display:inline-grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:.75rem;border:1px solid #e2e8f0;background:#fff;color:#334155}
+.slider-btn:hover{background:#f1f5f9}
+
+/* Steps */
+.step{display:flex;gap:.75rem}
+.step-icon{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:.5rem;background:#eaf2ff;color:#1d4ed8}
+.step-title{font-weight:700;color:#0f172a}
+.step-desc{font-size:.9rem;color:#64748b}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.reveal.is-visible{opacity:1;transform:none}
