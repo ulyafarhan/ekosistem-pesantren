@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::create('kontak_panitias', function (Blueprint $table) {
             $table->id();
-            // Kunci Relasi ke tabel periode_pendaftarans
-            $table->foreignId('periode_pendaftaran_id')
-                ->constrained()
-                ->onDelete('cascade'); // Jika periode dihapus, kontaknya ikut terhapus
-
-            $table->string('nama_panitia');
-            $table->string('nomor_whatsapp');
+            $table->foreignId('periode_pendaftaran_id')->constrained()->cascadeOnDelete();
+            $table->string('nama');
+            $table->string('nomor_wa');
             $table->timestamps();
         });
     }

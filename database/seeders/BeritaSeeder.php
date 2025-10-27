@@ -5,11 +5,17 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Berita;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class BeritaSeeder extends Seeder
 {
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        Berita::truncate();
+        Schema::enableForeignKeyConstraints();
+
         $beritas = [
             [
                 'judul' => 'Pesantren Pusat Raih Juara Umum di Musabaqah Qira\'atil Kutub Tingkat Nasional 2025',
@@ -29,12 +35,14 @@ class BeritaSeeder extends Seeder
         ];
 
         foreach ($beritas as $berita) {
+            $now = now()->subDays(rand(1, 30));
             Berita::create([
                 'judul' => $berita['judul'],
                 'slug' => Str::slug($berita['judul']),
                 'isi_konten' => $berita['isi_konten'],
                 'status' => $berita['status'],
-                'created_at' => now()->subDays(rand(1, 30)),
+                'created_at' => $now,
+                'updated_at' => $now,
             ]);
         }
 

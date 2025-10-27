@@ -23,7 +23,7 @@ it('can render the create page', function () {
 });
 
 it('can render the edit page', function () {
-    $galeri = Galeri::factory()->create();
+    $galeri = Galeri::factory()->create(['deskripsi' => 'Deskripsi pengujian']);
     $this->get(GaleriResource::getUrl('edit', ['record' => $galeri]))->assertSuccessful();
 });
 
@@ -35,7 +35,7 @@ it('can create a new galeri item', function () {
             'judul' => $newData->judul,
             'deskripsi' => $newData->deskripsi,
             'tipe' => $newData->tipe,
-            'video_url' => $newData->file_media,
+            'video_url' => $newData->video_url,
         ])
         ->call('create')
         ->assertHasNoFormErrors();
@@ -69,7 +69,7 @@ it('can update a galeri item', function () {
 });
 
 it('can delete a galeri item', function () {
-    $galeri = Galeri::factory()->create();
+    $galeri = Galeri::factory()->create(['deskripsi' => 'Deskripsi pengujian']);
 
     // PERBAIKAN: Memanggil class EditGaleri yang benar (tanpa "s")
     livewire(GaleriResource\Pages\EditGaleri::class, [

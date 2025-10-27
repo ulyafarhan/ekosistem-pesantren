@@ -9,6 +9,11 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\View\TablesRenderHook;
+
+use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Support\Facades\Storage;
 
 class GaleriResource extends Resource
 {
@@ -33,16 +38,18 @@ class GaleriResource extends Resource
                         'video' => 'Video',
                     ])
                     ->required()
-                    ->live(), // Tambahkan live() agar UI reaktif
-                
-                // NAMA UNIK 1: 'photo_upload'
-                Forms\Components\FileUpload::make('photo_upload')
+                    ->live(),
+
+                Forms\Components\FileUpload::make('file_media')
                     ->label('Upload Foto')
+                    ->multiple()
                     ->image()
+                    ->reorderable()
+                    ->appendFiles()
                     ->directory('galeri')
+                    ->panelLayout('grid')
                     ->visible(fn (callable $get) => $get('tipe') === 'foto'),
 
-                // NAMA UNIK 2: 'video_url'
                 Forms\Components\TextInput::make('video_url')
                     ->label('URL Video (YouTube/Vimeo)')
                     ->url()
@@ -56,6 +63,17 @@ class GaleriResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('judul')->searchable(),
                 Tables\Columns\TextColumn::make('tipe')->badge(),
+                Tables\Columns\ImageColumn::make('file_media')
+                    ->label('Media')
+                    ->circular()
+                    ->limit(3)
+                    ->limitedRemainingText()
+                    ->visible(fn (?Galeri $record): bool => $record?->tipe === 'foto'),
+                Tables\Columns\TextColumn::make('file_media.0')
+                    ->label('Video URL')
+                    ->url(fn (?Galeri $record): string => $record?->file_media[0] ?? '')
+                    ->openUrlInNewTab()
+                    ->visible(fn (?Galeri $record): bool => $record?->tipe === 'video'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([
@@ -63,12 +81,50 @@ class GaleriResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('view_media')
+                    ->label('Lihat Media')
+                    ->icon('heroicon-o-eye')
+                    ->modalContent(fn (Galeri $record) => view('filament.resources.galeri-resource.view-media', ['record' => $record]))
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false)
+                    ->visible(fn (Galeri $record): bool => $record->tipe === 'foto' && !empty($record->file_media)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function fillForm(Model $record): void
+    {
+        parent::fillForm($record);
+
+        if ($record->tipe === 'video') {
+            $record->video_url = $record->file_media[0] ?? null;
+        }
+    }
+
+    protected static function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['tipe'] === 'video') {
+            $data['file_media'] = [$data['video_url']];
+        }
+
+        unset($data['video_url']);
+
+        return $data;
+    }
+
+    protected static function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['tipe'] === 'video') {
+            $data['file_media'] = [$data['video_url']];
+        }
+
+        unset($data['video_url']);
+
+        return $data;
     }
 
 

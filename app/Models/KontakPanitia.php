@@ -10,5 +10,5 @@ class KontakPanitia extends Model
     /** @use HasFactory<\Database\Factories\KontakPanitiaFactory> */
     use HasFactory;
 
-    protected $fillable = ['periode_pendaftaran_id', 'nama_panitia', 'nomor_whatsapp'];
+    protected $fillable = ['periode_pendaftaran_id', 'nama', 'nomor_wa'];
 }

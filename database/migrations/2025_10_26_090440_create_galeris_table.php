@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->text('deskripsi')->nullable();
-            $table->string('file_media');
+            $table->json('file_media');
             $table->enum('tipe', ['foto', 'video'])->default('foto');
             $table->timestamps();
         });

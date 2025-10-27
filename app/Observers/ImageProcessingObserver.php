@@ -17,8 +17,14 @@ class ImageProcessingObserver
 
         foreach ($model->getFileFields() as $field) {
             if ($model->isDirty($field) && $model->{$field}) {
-                $filePath = $model->{$field};
                 
+                $fileValue = $model->{$field};
+                $filePath = is_array($fileValue) ? $fileValue[0] : $fileValue;
+
+                if (empty($filePath)) {
+                    continue;
+                }
+
                 if (Storage::disk('public')->exists($filePath) && !Str::startsWith($filePath, 'http')) {
                     $this->processImage($filePath);
                 }
@@ -28,16 +34,12 @@ class ImageProcessingObserver
 
     protected function processImage(string $filePath): void
     {
-        // Dapatkan path lengkap dari file di storage
         $fullPath = Storage::disk('public')->path($filePath);
 
         try {
-            // 2. Buat rantai optimizer dan jalankan pada file
             $optimizerChain = OptimizerChainFactory::create();
             $optimizerChain->optimize($fullPath);
         } catch (\Exception $e) {
-            // Abaikan jika ada error (misal, tool tidak ditemukan)
-            // agar aplikasi tetap berjalan
             report($e);
             return;
         }

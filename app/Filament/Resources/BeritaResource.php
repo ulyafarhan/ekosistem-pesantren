@@ -13,11 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Illuminate\Support\Str;
+
 class BeritaResource extends Resource
 {
     protected static ?string $model = Berita::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
     
     protected static ?string $pluralModelLabel = 'Berita';
     protected static ?string $modelLabel = 'Berita';
@@ -28,8 +30,20 @@ class BeritaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('judul')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
                 Forms\Components\TextInput::make('slug')
+                    ->required()
+                    ->unique(Berita::class, 'slug', ignoreRecord: true)
+                    ->disabled()
+                    ->dehydrated(),
+                Forms\Components\Select::make('kategori_berita')
+                    ->options([
+                        'Berita Sekolah' => 'Berita Sekolah',
+                        'Berita Pesantren' => 'Berita Pesantren',
+                        'Lainnya' => 'Lainnya',
+                    ])
                     ->required(),
                 Forms\Components\RichEditor::make('isi_konten')
                     ->required()
@@ -51,9 +65,8 @@ class BeritaResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('gambar_utama')->circular()->label('Media'),
                 Tables\Columns\TextColumn::make('judul')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('foto')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

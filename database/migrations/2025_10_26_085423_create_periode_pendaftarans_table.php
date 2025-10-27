@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('periode_pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('tahun_ajaran'); 
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_selesai');
-            $table->boolean('status')->default(false); 
+            $table->string('tahun_ajaran');
+            $table->date('tanggal_buka');
+            $table->date('tanggal_tutup');
+            $table->enum('status', ['dibuka', 'ditutup', 'akan_datang'])->default('akan_datang');
             $table->timestamps();
         });
     }

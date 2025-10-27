@@ -34,6 +34,7 @@ it('can create a new berita', function () {
             'slug' => $newData->slug,
             'isi_konten' => $newData->isi_konten, // DIUBAH DARI 'isi'
             'status' => $newData->status,
+            'kategori_berita' => 'Berita Sekolah',
             'gambar_utama' => null,
         ])
         ->call('create')
@@ -56,6 +57,7 @@ it('can update a berita', function () {
             'slug' => $newData->slug,
             'isi_konten' => $newData->isi_konten, // DIUBAH DARI 'isi'
             'status' => $newData->status,
+            'kategori_berita' => 'Berita Sekolah',
             'gambar_utama' => null,
         ])
         ->call('save')

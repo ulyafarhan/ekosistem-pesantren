@@ -17,7 +17,7 @@ class TokohSejarahResource extends Resource
 {
     protected static ?string $model = TokohSejarah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $pluralModelLabel = 'Tokoh Sejarah';
     protected static ?string $modelLabel = 'Tokoh Sejarah';
@@ -31,7 +31,10 @@ class TokohSejarahResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('periode_jabatan')
                     ->required(),
-                Forms\Components\TextInput::make('foto'),
+                Forms\Components\FileUpload::make('foto')
+                    ->image()
+                    ->disk('public')
+                    ->directory('tokoh-sejarah'),
                 Forms\Components\Textarea::make('kisah_historis')
                     ->required()
                     ->columnSpanFull(),
@@ -46,7 +49,7 @@ class TokohSejarahResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('periode_jabatan')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('foto')
+                Tables\Columns\ImageColumn::make('foto')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

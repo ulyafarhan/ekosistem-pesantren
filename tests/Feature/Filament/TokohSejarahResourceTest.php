@@ -4,6 +4,8 @@ use App\Filament\Resources\TokohSejarahResource;
 use App\Models\TokohSejarah;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use function Pest\Livewire\livewire;
 
 uses(RefreshDatabase::class);
@@ -26,6 +28,9 @@ it('can render the edit page', function () {
 });
 
 it('can create a new tokoh sejarah', function () {
+    Storage::fake('public');
+    $file = UploadedFile::fake()->image('avatar.jpg');
+
     $newData = TokohSejarah::factory()->make();
 
     livewire(TokohSejarahResource\Pages\CreateTokohSejarah::class)
@@ -33,19 +38,26 @@ it('can create a new tokoh sejarah', function () {
             'nama_lengkap' => $newData->nama_lengkap,
             'periode_jabatan' => $newData->periode_jabatan,
             'kisah_historis' => $newData->kisah_historis,
-            'foto' => null,
+            'foto' => $file,
         ])
         ->call('create')
         ->assertHasNoFormErrors();
 
     $this->assertDatabaseHas('tokoh_sejarahs', [
         'nama_lengkap' => $newData->nama_lengkap,
+        'periode_jabatan' => $newData->periode_jabatan,
+        'kisah_historis' => $newData->kisah_historis,
     ]);
+
+    $tokoh = TokohSejarah::where('nama_lengkap', $newData->nama_lengkap)->first();
+    Storage::disk('public')->assertExists($tokoh->foto);
 });
 
 it('can update a tokoh sejarah', function () {
     $tokoh = TokohSejarah::factory()->create();
     $newData = TokohSejarah::factory()->make();
+    Storage::fake('public');
+    $newFile = UploadedFile::fake()->image('new_avatar.jpg');
 
     livewire(TokohSejarahResource\Pages\EditTokohSejarah::class, [
         'record' => $tokoh->getRouteKey(),
@@ -54,7 +66,7 @@ it('can update a tokoh sejarah', function () {
             'nama_lengkap' => $newData->nama_lengkap,
             'periode_jabatan' => $newData->periode_jabatan,
             'kisah_historis' => $newData->kisah_historis,
-            'foto' => null,
+            'foto' => $newFile,
         ])
         ->call('save')
         ->assertHasNoFormErrors();
@@ -62,7 +74,12 @@ it('can update a tokoh sejarah', function () {
     $this->assertDatabaseHas('tokoh_sejarahs', [
         'id' => $tokoh->id,
         'nama_lengkap' => $newData->nama_lengkap,
+        'periode_jabatan' => $newData->periode_jabatan,
+        'kisah_historis' => $newData->kisah_historis,
     ]);
+
+    $tokoh->refresh();
+    Storage::disk('public')->assertExists($tokoh->foto);
 });
 
 it('can delete a tokoh sejarah', function () {

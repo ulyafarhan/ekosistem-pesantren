@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique(); 
             $table->string('gambar_utama')->nullable();
             $table->longText('isi_konten');
+            $table->enum('kategori_berita', ['Berita Sekolah', 'Berita Pesantren', 'Lainnya'])->nullable();
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();
         });

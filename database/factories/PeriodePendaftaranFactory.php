@@ -10,6 +10,7 @@ class PeriodePendaftaranFactory extends Factory
     {
         return [
             'tahun_ajaran' => '2025/2026',
+            'gelombang' => 1,
             'tanggal_mulai' => now()->subMonth(),
             'tanggal_selesai' => now()->addMonth(),
             'status' => true,

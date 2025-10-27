@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\laragon\www\ekosistem-pesantren\phpunit.xml" tests="83" assertions="193" errors="11" failures="7" skipped="0" time="27.469250">
+    <testsuite name="Unit" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007368">
+      <testsuite name="Tests\Unit\ExampleTest" file="Example (Tests\Unit\Example)" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007368">
+        <testcase name="That true is true" file="Example (Tests\Unit\Example)::That true is true" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.007368"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="82" assertions="192" errors="11" failures="7" skipped="0" time="27.461882">
+      <testsuite name="Tests\Feature\Filament\BeritaResourceTest" file="Berita Resource (Tests\Feature\Filament\BeritaResource)" tests="7" assertions="19" errors="0" failures="2" skipped="0" time="3.471880">
+        <testcase name="Can render berita list page" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can render berita list page" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="1" time="1.308826"/>
+        <testcase name="Can list berita" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can list berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="5" time="0.376521"/>
+        <testcase name="Can render berita create page" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can render berita create page" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="1" time="0.259209"/>
+        <testcase name="Can create berita" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can create berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="3" time="0.479859">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Can create beritaComponent has errors: "data.kategori_berita"
+Failed asserting that false is true.&#13;
+at vendor\livewire\livewire\src\Features\SupportValidation\TestsValidation.php:109
+at vendor\filament\forms\src\Testing\TestsForms.php:135
+at vendor\laravel\framework\src\Illuminate\Macroable\Traits\Macroable.php:126
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:395
+at tests\Feature\BeritaResourceTest.php:51</failure>
+        </testcase>
+        <testcase name="Can render berita edit page" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can render berita edit page" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="1" time="0.258931"/>
+        <testcase name="Can update berita" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can update berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="3" time="0.428121">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Can update beritaComponent has errors: "data.kategori_berita"
+Failed asserting that false is true.&#13;
+at vendor\livewire\livewire\src\Features\SupportValidation\TestsValidation.php:109
+at vendor\filament\forms\src\Testing\TestsForms.php:135
+at vendor\laravel\framework\src\Illuminate\Macroable\Traits\Macroable.php:126
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:395
+at tests\Feature\BeritaResourceTest.php:79</failure>
+        </testcase>
+        <testcase name="Can delete berita" file="Berita Resource (Tests\Feature\Filament\BeritaResource)::Can delete berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="5" time="0.360412"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ExampleTest" file="Example (Tests\Feature\Example)" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.153598">
+        <testcase name="The application returns a successful response" file="Example (Tests\Feature\Example)::The application returns a successful response" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="1" time="0.153598"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\BeritaResourceTest" file="tests\Feature\Filament\BeritaResourceTest.php" tests="6" assertions="16" errors="0" failures="1" skipped="0" time="1.952274">
+        <testcase name="it can render the list page" file="tests\Feature\Filament\BeritaResourceTest.php::it can render the list page" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="1" time="0.245285"/>
+        <testcase name="it can render the create page" file="tests\Feature\Filament\BeritaResourceTest.php::it can render the create page" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="1" time="0.254853"/>
+        <testcase name="it can render the edit page" file="tests\Feature\Filament\BeritaResourceTest.php::it can render the edit page" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="1" time="0.256839"/>
+        <testcase name="it can create a new berita" file="tests\Feature\Filament\BeritaResourceTest.php::it can create a new berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="4" time="0.434879"/>
+        <testcase name="it can update a berita" file="tests\Feature\Filament\BeritaResourceTest.php::it can update a berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="3" time="0.442393">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">it can update a beritaComponent has errors: "data.kategori_berita"
+Failed asserting that false is true.&#13;
+at vendor\livewire\livewire\src\Features\SupportValidation\TestsValidation.php:109
+at vendor\filament\forms\src\Testing\TestsForms.php:135
+at vendor\laravel\framework\src\Illuminate\Macroable\Traits\Macroable.php:126
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:395
+at tests\Feature\Filament\BeritaResourceTest.php:63</failure>
+        </testcase>
+        <testcase name="it can delete a berita" file="tests\Feature\Filament\BeritaResourceTest.php::it can delete a berita" class="Tests\Feature\Filament\BeritaResourceTest" classname="Tests.Feature.Filament.BeritaResourceTest" assertions="6" time="0.318025"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\GaleriResourceTest" file="tests\Feature\Filament\GaleriResourceTest.php" tests="6" assertions="14" errors="1" failures="0" skipped="0" time="1.626494">
+        <testcase name="it can render the list page" file="tests\Feature\Filament\GaleriResourceTest.php::it can render the list page" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.249217"/>
+        <testcase name="it can render the create page" file="tests\Feature\Filament\GaleriResourceTest.php::it can render the create page" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.220140"/>
+        <testcase name="it can render the edit page" file="tests\Feature\Filament\GaleriResourceTest.php::it can render the edit page" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.246656"/>
+        <testcase name="it can create a new galeri item" file="tests\Feature\Filament\GaleriResourceTest.php::it can create a new galeri item" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.275631">
+          <error type="Illuminate\Database\QueryException">it can create a new galeri itemIlluminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: galeris.file_media (Connection: sqlite, SQL: insert into "galeris" ("judul", "deskripsi", "tipe", "file_media", "updated_at", "created_at") values (Quaerat quis libero est laboriosam nihil., Facere illo quos maxime voluptas earum explicabo molestiae et. Qui quia maxime fuga ab. Rem perspiciatis voluptas ad harum accusantium aut., video, ?, 2025-10-26 17:24:08, 2025-10-26 17:24:08))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:570
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\filament\filament\src\Resources\Pages\CreateRecord.php:177
+at vendor\filament\filament\src\Resources\Pages\CreateRecord.php:94
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:36
+at vendor\laravel\framework\src\Illuminate\Container\Util.php:43
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:96
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:35
+at vendor\livewire\livewire\src\Wrapped.php:23
+at vendor\livewire\livewire\src\Mechanisms\HandleComponents\HandleComponents.php:492
+at vendor\livewire\livewire\src\Mechanisms\HandleComponents\HandleComponents.php:101
+at vendor\livewire\livewire\src\LivewireManager.php:102
+at vendor\livewire\livewire\src\Mechanisms\HandleRequests\HandleRequests.php:94
+at vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:46
+at vendor\laravel\framework\src\Illuminate\Routing\Route.php:265
+at vendor\laravel\framework\src\Illuminate\Routing\Route.php:211
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:822
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:180
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:137
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:821
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:800
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:764
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:753
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:200
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:180
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:137
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:175
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:144
+at vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php:607
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:36
+at vendor\livewire\livewire\src\Features\SupportTesting\RequestBroker.php:30
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:35
+at vendor\livewire\livewire\src\Features\SupportTesting\Render.php:24
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:34
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:16
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:252
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:219
+at tests\Feature\Filament\GaleriResourceTest.php:40
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: galeris.file_media
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:570
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\filament\filament\src\Resources\Pages\CreateRecord.php:177
+at vendor\filament\filament\src\Resources\Pages\CreateRecord.php:94
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:36
+at vendor\laravel\framework\src\Illuminate\Container\Util.php:43
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:96
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:35
+at vendor\livewire\livewire\src\Wrapped.php:23
+at vendor\livewire\livewire\src\Mechanisms\HandleComponents\HandleComponents.php:492
+at vendor\livewire\livewire\src\Mechanisms\HandleComponents\HandleComponents.php:101
+at vendor\livewire\livewire\src\LivewireManager.php:102
+at vendor\livewire\livewire\src\Mechanisms\HandleRequests\HandleRequests.php:94
+at vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:46
+at vendor\laravel\framework\src\Illuminate\Routing\Route.php:265
+at vendor\laravel\framework\src\Illuminate\Routing\Route.php:211
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:822
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:180
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:137
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:821
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:800
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:764
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:753
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:200
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:180
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:137
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:175
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:144
+at vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php:607
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:36
+at vendor\livewire\livewire\src\Features\SupportTesting\RequestBroker.php:30
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:35
+at vendor\livewire\livewire\src\Features\SupportTesting\Render.php:24
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:34
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:16
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:252
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:219
+at tests\Feature\Filament\GaleriResourceTest.php:40</error>
+        </testcase>
+        <testcase name="it can update a galeri item" file="tests\Feature\Filament\GaleriResourceTest.php::it can update a galeri item" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="4" time="0.352669"/>
+        <testcase name="it can delete a galeri item" file="tests\Feature\Filament\GaleriResourceTest.php::it can delete a galeri item" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="6" time="0.282181"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\PengurusResourceTest" file="tests\Feature\Filament\PengurusResourceTest.php" tests="6" assertions="17" errors="0" failures="0" skipped="0" time="1.697445">
+        <testcase name="it can render the list page" file="tests\Feature\Filament\PengurusResourceTest.php::it can render the list page" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="1" time="0.269458"/>
+        <testcase name="it can render the create page" file="tests\Feature\Filament\PengurusResourceTest.php::it can render the create page" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="1" time="0.232961"/>
+        <testcase name="it can render the edit page" file="tests\Feature\Filament\PengurusResourceTest.php::it can render the edit page" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="1" time="0.242221"/>
+        <testcase name="it can create a new pengurus" file="tests\Feature\Filament\PengurusResourceTest.php::it can create a new pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="4" time="0.341675"/>
+        <testcase name="it can update a pengurus" file="tests\Feature\Filament\PengurusResourceTest.php::it can update a pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="4" time="0.351271"/>
+        <testcase name="it can delete a pengurus" file="tests\Feature\Filament\PengurusResourceTest.php::it can delete a pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="6" time="0.259858"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\PeriodePendaftaranTest" file="tests\Feature\Filament\PeriodePendaftaranTest.php" tests="6" assertions="5" errors="3" failures="1" skipped="0" time="1.878586">
+        <testcase name="it can render the list page" file="tests\Feature\Filament\PeriodePendaftaranTest.php::it can render the list page" class="Tests\Feature\Filament\PeriodePendaftaranTest" classname="Tests.Feature.Filament.PeriodePendaftaranTest" assertions="1" time="0.288017"/>
+        <testcase name="it can render the create page" file="tests\Feature\Filament\PeriodePendaftaranTest.php::it can render the create page" class="Tests\Feature\Filament\PeriodePendaftaranTest" classname="Tests.Feature.Filament.PeriodePendaftaranTest" assertions="1" time="0.364399"/>
+        <testcase name="it can render the edit page" file="tests\Feature\Filament\PeriodePendaftaranTest.php::it can render the edit page" class="Tests\Feature\Filament\PeriodePendaftaranTest" classname="Tests.Feature.Filament.PeriodePendaftaranTest" assertions="0" time="0.147971">
+          <error type="Illuminate\Database\QueryException">it can render the edit pageIlluminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai (Connection: sqlite, SQL: insert into "periode_pendaftarans" ("tahun_ajaran", "tanggal_mulai", "tanggal_selesai", "status", "updated_at", "created_at") values (2025/2026, 2025-09-26 17:24:11, 2025-11-26 17:24:11, 1, 2025-10-26 17:24:11, 2025-10-26 17:24:11))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\Filament\PeriodePendaftaranTest.php:25
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\Filament\PeriodePendaftaranTest.php:25</error>
+        </testcase>
+        <testcase name="it can create a new periode" file="tests\Feature\Filament\PeriodePendaftaranTest.php::it can create a new periode" class="Tests\Feature\Filament\PeriodePendaftaranTest" classname="Tests.Feature.Filament.PeriodePendaftaranTest" assertions="3" time="0.808530">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">it can create a new periodeComponent has errors: "data.tanggal_buka", "data.tanggal_tutup"
+Failed asserting that false is true.&#13;
+at vendor\livewire\livewire\src\Features\SupportValidation\TestsValidation.php:109
+at vendor\filament\forms\src\Testing\TestsForms.php:135
+at vendor\laravel\framework\src\Illuminate\Macroable\Traits\Macroable.php:126
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:395
+at tests\Feature\Filament\PeriodePendaftaranTest.php:40</failure>
+        </testcase>
+        <testcase name="it can update a periode" file="tests\Feature\Filament\PeriodePendaftaranTest.php::it can update a periode" class="Tests\Feature\Filament\PeriodePendaftaranTest" classname="Tests.Feature.Filament.PeriodePendaftaranTest" assertions="0" time="0.131500">
+          <error type="Illuminate\Database\QueryException">it can update a periodeIlluminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai (Connection: sqlite, SQL: insert into "periode_pendaftarans" ("tahun_ajaran", "tanggal_mulai", "tanggal_selesai", "status", "updated_at", "created_at") values (2025/2026, 2025-09-26 17:24:12, 2025-11-26 17:24:12, 1, 2025-10-26 17:24:12, 2025-10-26 17:24:12))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\Filament\PeriodePendaftaranTest.php:48
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\Filament\PeriodePendaftaranTest.php:48</error>
+        </testcase>
+        <testcase name="it can delete a periode" file="tests\Feature\Filament\PeriodePendaftaranTest.php::it can delete a periode" class="Tests\Feature\Filament\PeriodePendaftaranTest" classname="Tests.Feature.Filament.PeriodePendaftaranTest" assertions="0" time="0.138170">
+          <error type="Illuminate\Database\QueryException">it can delete a periodeIlluminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai (Connection: sqlite, SQL: insert into "periode_pendaftarans" ("tahun_ajaran", "tanggal_mulai", "tanggal_selesai", "status", "updated_at", "created_at") values (2025/2026, 2025-09-26 17:24:12, 2025-11-26 17:24:12, 1, 2025-10-26 17:24:12, 2025-10-26 17:24:12))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\Filament\PeriodePendaftaranTest.php:70
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\Filament\PeriodePendaftaranTest.php:70</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\TokohSejarahResourceTest" file="tests\Feature\Filament\TokohSejarahResourceTest.php" tests="6" assertions="18" errors="0" failures="1" skipped="0" time="2.035767">
+        <testcase name="it can render the list page" file="tests\Feature\Filament\TokohSejarahResourceTest.php::it can render the list page" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="1" time="0.265883"/>
+        <testcase name="it can render the create page" file="tests\Feature\Filament\TokohSejarahResourceTest.php::it can render the create page" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="1" time="0.229518"/>
+        <testcase name="it can render the edit page" file="tests\Feature\Filament\TokohSejarahResourceTest.php::it can render the edit page" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="1" time="0.239935"/>
+        <testcase name="it can create a new tokoh sejarah" file="tests\Feature\Filament\TokohSejarahResourceTest.php::it can create a new tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="5" time="0.595594">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">it can create a new tokoh sejarahUnable to find a file or directory at path [tokoh-sejarah/iLSHajRByIs7RE8ybDnT2FIeJSwlXszaIVTKbvrV.jpg].
+Failed asserting that false is true.&#13;
+at vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemAdapter.php:129
+at tests\Feature\Filament\TokohSejarahResourceTest.php:52</failure>
+        </testcase>
+        <testcase name="it can update a tokoh sejarah" file="tests\Feature\Filament\TokohSejarahResourceTest.php::it can update a tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="4" time="0.435029"/>
+        <testcase name="it can delete a tokoh sejarah" file="tests\Feature\Filament\TokohSejarahResourceTest.php::it can delete a tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="6" time="0.269808"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\GaleriResourceTest" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)" tests="8" assertions="22" errors="1" failures="1" skipped="0" time="3.157224">
+        <testcase name="Can render galeri list page" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can render galeri list page" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.278656"/>
+        <testcase name="Can list galeri" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can list galeri" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="5" time="0.493044"/>
+        <testcase name="Can render galeri create page" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can render galeri create page" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.248374"/>
+        <testcase name="Can create galeri with foto" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can create galeri with foto" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.369937">
+          <error type="ErrorException">Can create galeri with fotoErrorException: Undefined array key "photo_upload"&#13;
+at vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php:258
+at app\Filament\Resources\GaleriResource\Pages\CreateGaleri.php:17
+at vendor\filament\filament\src\Resources\Pages\CreateRecord.php:90
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:36
+at vendor\laravel\framework\src\Illuminate\Container\Util.php:43
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:96
+at vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:35
+at vendor\livewire\livewire\src\Wrapped.php:23
+at vendor\livewire\livewire\src\Mechanisms\HandleComponents\HandleComponents.php:492
+at vendor\livewire\livewire\src\Mechanisms\HandleComponents\HandleComponents.php:101
+at vendor\livewire\livewire\src\LivewireManager.php:102
+at vendor\livewire\livewire\src\Mechanisms\HandleRequests\HandleRequests.php:94
+at vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:46
+at vendor\laravel\framework\src\Illuminate\Routing\Route.php:265
+at vendor\laravel\framework\src\Illuminate\Routing\Route.php:211
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:822
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:180
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:137
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:821
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:800
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:764
+at vendor\laravel\framework\src\Illuminate\Routing\Router.php:753
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:200
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:180
+at vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php:137
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:175
+at vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:144
+at vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php:607
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:36
+at vendor\livewire\livewire\src\Features\SupportTesting\RequestBroker.php:30
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:35
+at vendor\livewire\livewire\src\Features\SupportTesting\Render.php:24
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:34
+at vendor\livewire\livewire\src\Features\SupportTesting\SubsequentRender.php:16
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:252
+at vendor\livewire\livewire\src\Features\SupportTesting\Testable.php:219
+at tests\Feature\GaleriResourceTest.php:54</error>
+        </testcase>
+        <testcase name="Can create galeri with video" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can create galeri with video" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="4" time="0.373432">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Can create galeri with videoFailed asserting that a row in the table [galeris] matches the attributes {
+    "judul": "Judul Video Baru",
+    "tipe": "video",
+    "file_media": "[\"https:\\\/\\\/youtube.com\\\/watch?v=example\"]"
+}.
+
+Found similar results: [
+    {
+        "judul": "Judul Video Baru",
+        "tipe": "video",
+        "file_media": "\"https:\\\/\\\/youtube.com\\\/watch?v=example\""
+    }
+].&#13;
+at vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase.php:43
+at tests\Feature\GaleriResourceTest.php:78</failure>
+        </testcase>
+        <testcase name="Can render galeri edit page" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can render galeri edit page" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="1" time="0.366767"/>
+        <testcase name="Can update galeri" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can update galeri" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="4" time="0.660799"/>
+        <testcase name="Can delete galeri" file="Galeri Resource (Tests\Feature\Filament\GaleriResource)::Can delete galeri" class="Tests\Feature\Filament\GaleriResourceTest" classname="Tests.Feature.Filament.GaleriResourceTest" assertions="5" time="0.366216"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\PengurusResourceTest" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)" tests="7" assertions="22" errors="0" failures="0" skipped="0" time="3.012841">
+        <testcase name="Can render pengurus list page" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can render pengurus list page" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="1" time="0.353484"/>
+        <testcase name="Can list pengurus" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can list pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="5" time="0.328137"/>
+        <testcase name="Can render pengurus create page" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can render pengurus create page" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="1" time="0.231687"/>
+        <testcase name="Can create pengurus" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can create pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="5" time="0.605680"/>
+        <testcase name="Can render pengurus edit page" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can render pengurus edit page" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="1" time="0.315826"/>
+        <testcase name="Can update pengurus" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can update pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="4" time="0.805401"/>
+        <testcase name="Can delete pengurus" file="Pengurus Resource (Tests\Feature\Filament\PengurusResource)::Can delete pengurus" class="Tests\Feature\Filament\PengurusResourceTest" classname="Tests.Feature.Filament.PengurusResourceTest" assertions="5" time="0.372626"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\PeriodePendaftaranResourceTest" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)" tests="8" assertions="2" errors="6" failures="0" skipped="0" time="1.516836">
+        <testcase name="Can render periode pendaftaran list page" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can render periode pendaftaran list page" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="1" time="0.338739"/>
+        <testcase name="Can list periode pendaftaran" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can list periode pendaftaran" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="0" time="0.145463">
+          <error type="Illuminate\Database\QueryException">Can list periode pendaftaranIlluminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai (Connection: sqlite, SQL: insert into "periode_pendaftarans" ("tahun_ajaran", "tanggal_mulai", "tanggal_selesai", "status", "updated_at", "created_at") values (2025/2026, 2025-09-26 17:24:21, 2025-11-26 17:24:21, 1, 2025-10-26 17:24:21, 2025-10-26 17:24:21))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:325
+at tests\Feature\PeriodePendaftaranResourceTest.php:31
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:325
+at tests\Feature\PeriodePendaftaranResourceTest.php:31</error>
+        </testcase>
+        <testcase name="Can render periode pendaftaran create page" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can render periode pendaftaran create page" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="1" time="0.353292"/>
+        <testcase name="Can create periode pendaftaran and brosur" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can create periode pendaftaran and brosur" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="0" time="0.132910">
+          <error type="BadMethodCallException">Can create periode pendaftaran and brosurBadMethodCallException: Call to undefined method App\Models\Brosur::factory()&#13;
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:67
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:36
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2540
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2556
+at tests\Feature\PeriodePendaftaranResourceTest.php:45</error>
+        </testcase>
+        <testcase name="Can render periode pendaftaran edit page" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can render periode pendaftaran edit page" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="0" time="0.134269">
+          <error type="BadMethodCallException">Can render periode pendaftaran edit pageBadMethodCallException: Call to undefined method App\Models\Brosur::factory()&#13;
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:67
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:36
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2540
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2556
+at tests\Feature\PeriodePendaftaranResourceTest.php:72</error>
+        </testcase>
+        <testcase name="Can update periode pendaftaran" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can update periode pendaftaran" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="0" time="0.124793">
+          <error type="BadMethodCallException">Can update periode pendaftaranBadMethodCallException: Call to undefined method App\Models\Brosur::factory()&#13;
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:67
+at vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:36
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2540
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2556
+at tests\Feature\PeriodePendaftaranResourceTest.php:78</error>
+        </testcase>
+        <testcase name="Can delete periode pendaftaran" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can delete periode pendaftaran" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="0" time="0.142848">
+          <error type="Illuminate\Database\QueryException">Can delete periode pendaftaranIlluminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai (Connection: sqlite, SQL: insert into "periode_pendaftarans" ("tahun_ajaran", "tanggal_mulai", "tanggal_selesai", "status", "updated_at", "created_at") values (2025/2026, 2025-09-26 17:24:22, 2025-11-26 17:24:22, 1, 2025-10-26 17:24:22, 2025-10-26 17:24:22))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\PeriodePendaftaranResourceTest.php:98
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\PeriodePendaftaranResourceTest.php:98</error>
+        </testcase>
+        <testcase name="Can manage kontak panitia relation" file="Periode Pendaftaran Resource (Tests\Feature\Filament\PeriodePendaftaranResource)::Can manage kontak panitia relation" class="Tests\Feature\Filament\PeriodePendaftaranResourceTest" classname="Tests.Feature.Filament.PeriodePendaftaranResourceTest" assertions="0" time="0.144522">
+          <error type="Illuminate\Database\QueryException">Can manage kontak panitia relationIlluminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai (Connection: sqlite, SQL: insert into "periode_pendaftarans" ("tahun_ajaran", "tanggal_mulai", "tanggal_selesai", "status", "updated_at", "created_at") values (2025/2026, 2025-09-26 17:24:22, 2025-11-26 17:24:22, 1, 2025-10-26 17:24:22, 2025-10-26 17:24:22))&#13;
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\PeriodePendaftaranResourceTest.php:110
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 table periode_pendaftarans has no column named tanggal_mulai
+
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:778
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:559
+at vendor\laravel\framework\src\Illuminate\Database\Connection.php:523
+at vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+at vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3853
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2235
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+at vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:271
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+at tests\Feature\PeriodePendaftaranResourceTest.php:110</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)" tests="7" assertions="17" errors="0" failures="0" skipped="0" time="1.955866">
+        <testcase name="Can render program dan fasilitas list page" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can render program dan fasilitas list page" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="1" time="0.267188"/>
+        <testcase name="Can list program dan fasilitas" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can list program dan fasilitas" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="1" time="0.233930"/>
+        <testcase name="Can render program dan fasilitas create page" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can render program dan fasilitas create page" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="1" time="0.236522"/>
+        <testcase name="Can create program dan fasilitas" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can create program dan fasilitas" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="4" time="0.315462"/>
+        <testcase name="Can render program dan fasilitas edit page" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can render program dan fasilitas edit page" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="1" time="0.252587"/>
+        <testcase name="Can update program dan fasilitas" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can update program dan fasilitas" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="4" time="0.377871"/>
+        <testcase name="Can delete program dan fasilitas" file="Program Dan Fasilitas Resource (Tests\Feature\Filament\ProgramDanFasilitasResource)::Can delete program dan fasilitas" class="Tests\Feature\Filament\ProgramDanFasilitasResourceTest" classname="Tests.Feature.Filament.ProgramDanFasilitasResourceTest" assertions="5" time="0.272306"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)" tests="7" assertions="17" errors="0" failures="0" skipped="0" time="2.147224">
+        <testcase name="Can render sejarah unit pendidikan list page" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can render sejarah unit pendidikan list page" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="1" time="0.241593"/>
+        <testcase name="Can list sejarah unit pendidikan" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can list sejarah unit pendidikan" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="1" time="0.238269"/>
+        <testcase name="Can render sejarah unit pendidikan create page" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can render sejarah unit pendidikan create page" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="1" time="0.250501"/>
+        <testcase name="Can create sejarah unit pendidikan" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can create sejarah unit pendidikan" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="4" time="0.348599"/>
+        <testcase name="Can render sejarah unit pendidikan edit page" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can render sejarah unit pendidikan edit page" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="1" time="0.303472"/>
+        <testcase name="Can update sejarah unit pendidikan" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can update sejarah unit pendidikan" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="4" time="0.459229"/>
+        <testcase name="Can delete sejarah unit pendidikan" file="Sejarah Unit Pendidikan Resource (Tests\Feature\Filament\SejarahUnitPendidikanResource)::Can delete sejarah unit pendidikan" class="Tests\Feature\Filament\SejarahUnitPendidikanResourceTest" classname="Tests.Feature.Filament.SejarahUnitPendidikanResourceTest" assertions="5" time="0.305560"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Filament\TokohSejarahResourceTest" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)" tests="7" assertions="22" errors="0" failures="1" skipped="0" time="2.855847">
+        <testcase name="Can render tokoh sejarah list page" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can render tokoh sejarah list page" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="1" time="0.281651"/>
+        <testcase name="Can list tokoh sejarah" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can list tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="5" time="0.359478"/>
+        <testcase name="Can render tokoh sejarah create page" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can render tokoh sejarah create page" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="1" time="0.251202"/>
+        <testcase name="Can create tokoh sejarah" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can create tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="5" time="0.678587">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Can create tokoh sejarahUnable to find a file or directory at path [tokoh-sejarah/v4wcMHADofsmlCMdFiUw7elbROCd3i5R5jrP7DTL.jpg].
+Failed asserting that false is true.&#13;
+at vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemAdapter.php:129
+at tests\Feature\TokohSejarahResourceTest.php:64</failure>
+        </testcase>
+        <testcase name="Can render tokoh sejarah edit page" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can render tokoh sejarah edit page" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="1" time="0.446381"/>
+        <testcase name="Can update tokoh sejarah" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can update tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="4" time="0.530537"/>
+        <testcase name="Can delete tokoh sejarah" file="Tokoh Sejarah Resource (Tests\Feature\Filament\TokohSejarahResource)::Can delete tokoh sejarah" class="Tests\Feature\Filament\TokohSejarahResourceTest" classname="Tests.Feature.Filament.TokohSejarahResourceTest" assertions="5" time="0.308011"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

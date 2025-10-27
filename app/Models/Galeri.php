@@ -16,7 +16,11 @@ class Galeri extends Model
         'judul', 
         'deskripsi', 
         'file_media', 
-        'tipe'
+        'tipe',
+    ];
+
+    protected $casts = [
+        'file_media' => 'array',
     ];
 
     protected $fileFields = ['file_media'];

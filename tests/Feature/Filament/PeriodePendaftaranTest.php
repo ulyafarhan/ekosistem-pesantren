@@ -32,6 +32,7 @@ it('can create a new periode', function () {
     livewire(PeriodePendaftaranResource\Pages\CreatePeriodePendaftaran::class)
         ->fillForm([
             'tahun_ajaran' => $newData->tahun_ajaran,
+            'gelombang' => $newData->gelombang,
             'tanggal_mulai' => $newData->tanggal_mulai,
             'tanggal_selesai' => $newData->tanggal_selesai,
             'status' => $newData->status,
@@ -53,6 +54,7 @@ it('can update a periode', function () {
     ])
         ->fillForm([
             'tahun_ajaran' => $newData->tahun_ajaran,
+            'gelombang' => $newData->gelombang,
             'tanggal_mulai' => $newData->tanggal_mulai,
             'tanggal_selesai' => $newData->tanggal_selesai,
             'status' => $newData->status,
