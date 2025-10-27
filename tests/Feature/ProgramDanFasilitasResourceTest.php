@@ -26,7 +26,7 @@ class ProgramDanFasilitasResourceTest extends TestCase
 
     public function test_can_list_program_dan_fasilitas(): void
     {
-        $records = ProgramDanFasilitas::factory()->count(1)->create();
+        $records = ProgramDanFasilitas::factory()->count(5)->create();
 
         Livewire::test(ProgramDanFasilitasResource\Pages\ListProgramDanFasilitas::class)
             ->assertCanSeeTableRecords($records);
@@ -51,6 +51,7 @@ class ProgramDanFasilitasResourceTest extends TestCase
 
         $this->assertDatabaseHas('program_dan_fasilitas', [
             'program_pendidikan' => $newData->program_pendidikan,
+            'fasilitas' => $newData->fasilitas,
         ]);
     }
 
@@ -70,6 +71,7 @@ class ProgramDanFasilitasResourceTest extends TestCase
         ])
         ->fillForm([
             'program_pendidikan' => $newData->program_pendidikan,
+            'fasilitas' => $newData->fasilitas,
         ])
         ->call('save')
         ->assertHasNoFormErrors();
@@ -77,6 +79,7 @@ class ProgramDanFasilitasResourceTest extends TestCase
         $this->assertDatabaseHas('program_dan_fasilitas', [
             'id' => $record->id,
             'program_pendidikan' => $newData->program_pendidikan,
+            'fasilitas' => $newData->fasilitas,
         ]);
     }
 
