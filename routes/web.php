@@ -5,6 +5,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\TokohSejarahController;
+use App\Http\Controllers\ProgramFasilitasController;
 use App\Http\Controllers\HomepageController;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
@@ -23,3 +24,5 @@ Route::get('/pengurus', [PengurusController::class, 'index'])->name('pengurus.in
 
 
 Route::get('/tokoh-sejarah', [TokohSejarahController::class, 'index'])->name('tokoh.sejarah.index');
+
+Route::get('/program-fasilitas', [ProgramFasilitasController::class, 'index'])->name('program.index');

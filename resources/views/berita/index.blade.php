@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semua Berita</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
-    <div class="container mx-auto p-8">
-        <h1 class="text-4xl font-bold text-gray-800 mb-8">Berita Terbaru</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach ($semuaBerita as $berita)
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <a href="{{ route('berita.show', $berita) }}">
-                        <img src="{{ asset('storage/' . $berita->thumbnail) }}" alt="{{ $berita->judul }}" class="w-full h-48 object-cover">
-                    </a>
-                    <div class="p-6">
-                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">{{ $berita->judul }}</h2>
-                        <p class="text-gray-600 mb-4">
-                            Diterbitkan pada {{ $berita->created_at->format('d F Y') }}
-                        </p>
-                        <a href="{{ route('berita.show', $berita) }}" class="text-blue-500 hover:text-blue-700 font-medium">
-                            Baca Selengkapnya &rarr;
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+@extends('layouts.app')
 
-        <div class="mt-8">
-            {{ $semuaBerita->links() }}
-        </div>
+@section('title', 'Semua Berita - Pesantren Pusat')
+
+@section('content')
+<header class="bg-gray-100 py-12">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl font-bold text-gray-800">Berita & Kegiatan</h1>
+        <p class="text-gray-600 mt-2">Ikuti informasi dan kegiatan terbaru dari kami.</p>
     </div>
-</body>
-</html>
+</header>
+
+<div class="container mx-auto p-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @forelse ($semuaBerita as $berita)
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                <a href="{{ route('berita.show', $berita) }}">
+                    <img src="{{ asset('storage/' . $berita->thumbnail) }}" alt="{{ $berita->judul }}" class="w-full h-56 object-cover">
+                </a>
+                <div class="p-6">
+                    <p class="text-sm text-gray-500 mb-2">{{ $berita->created_at->format('d F Y') }}</p>
+                    <h3 class="text-xl font-semibold mb-3 h-20">{{ Str::limit($berita->judul, 60) }}</h3>
+                    <a href="{{ route('berita.show', $berita) }}" class="text-blue-500 hover:text-blue-600 font-semibold">Baca Selengkapnya &rarr;</a>
+                </div>
+            </div>
+        @empty
+            <p class="md:col-span-3 text-center text-gray-500">Belum ada berita yang dipublikasikan.</p>
+        @endforelse
+    </div>
+
+    <div class="mt-12">
+        {{ $semuaBerita->links() }}
+    </div>
+</div>
+@endsection

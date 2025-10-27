@@ -1,44 +1,36 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Kegiatan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
-    <div class="container mx-auto p-8">
-        <h1 class="text-4xl font-bold text-gray-800 mb-8">Galeri Kegiatan</h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+@extends('layouts.app')
 
-            @foreach ($semuaGaleri as $item)
-                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
-                    <div class="relative">
-                        {{-- Logika untuk menampilkan Gambar atau Video --}}
-                        @if ($item->tipe === 'foto')
-                            <img src="{{ asset('storage/' . $item->media) }}" alt="{{ $item->judul }}" class="w-full h-56 object-cover">
-                        @elseif ($item->tipe === 'video')
-                            {{-- Ekstrak ID video YouTube dari URL --}}
-                            @php
-                                parse_str(parse_url($item->media, PHP_URL_QUERY), $vars);
-                                $youtubeId = $vars['v'] ?? null;
-                            @endphp
-                            @if ($youtubeId)
-                                <iframe class="w-full h-56" src="https://www.youtube.com/embed/{{ $youtubeId }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            @endif
-                        @endif
-                         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <p class="text-white text-lg font-semibold text-center p-4">{{ $item->judul }}</p>
+@section('title', 'Galeri Kegiatan - Pesantren Pusat')
+
+@section('content')
+<div x-data="{ open: false, imageSrc: '' }">
+    <header class="bg-gray-100 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold text-gray-800">Galeri Kegiatan</h1>
+            <p class="text-gray-600 mt-2">Momen-momen berharga dari kegiatan kami.</p>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @forelse ($semuaGaleri as $item)
+                @if ($item->tipe === 'foto')
+                    <div @click="open = true; imageSrc = '{{ asset('storage/' . $item->media) }}'" class="group relative cursor-pointer">
+                        <img src="{{ asset('storage/' . $item->media) }}" alt="{{ $item->judul }}" class="w-full h-64 object-cover rounded-lg shadow-md">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center p-4">
+                            <p class="text-white text-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity">{{ $item->judul }}</p>
                         </div>
                     </div>
-                </div>
-            @endforeach
-
-        </div>
-
-        <div class="mt-8">
-            {{ $semuaGaleri->links() }}
+                @endif
+            @empty
+                <p class="col-span-full text-center text-gray-500">Belum ada foto di galeri.</p>
+            @endforelse
         </div>
     </div>
-</body>
-</html>
+
+    <div x-show="open" @click.away="open = false" @keydown.escape.window="open = false" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4" style="display: none;">
+        <img :src="imageSrc" class="max-w-full max-h-full rounded-lg">
+        <button @click="open = false" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+    </div>
+</div>
+@endsection
