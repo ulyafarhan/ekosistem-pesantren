@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Galeri;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class GaleriController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        $semuaGaleri = Galeri::latest()->paginate(12);
-
-        return view('galeri.index', [
-            'semuaGaleri' => $semuaGaleri,
-        ]);
+        $galeris = Galeri::latest()->paginate(12);
+        return view('galeri.index', compact('galeris'));
     }
 }

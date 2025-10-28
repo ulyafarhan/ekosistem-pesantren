@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Website resmi Pesantren Pusat, pusat pendidikan Islam yang modern dan berintegritas untuk mencetak generasi Qur'ani.">
-    <meta name="keywords" content="pesantren, pendidikan islam, sekolah islam, pendaftaran santri">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesantren Pusat - Mendidik Generasi Qur'ani</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-    </style>
-</head>
-<body class="bg-white text-gray-800">
+@extends('layouts.app')
 
+@section('title', 'Pesantren Pusat - Mendidik Generasi Qur\'ani')
+@section('description', 'Website resmi Pesantren Pusat, pusat pendidikan Islam yang modern dan berintegritas untuk mencetak generasi Qur\'ani.')
+
+@section('content')
     <div 
         x-data="{
             slides: {{ $heroSliders->pluck('gambar')->filter()->values()->toJson() }}},
@@ -27,11 +15,8 @@
                     this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1;
                 }, 5000);
             },
-            init() { this.loop(); },
-            scrolled: false,
-            navOpen: false
+            init() { this.loop(); }
         }"
-        @scroll.window="scrolled = (window.pageYOffset > 50)"
         class="relative min-h-screen bg-gray-900"
     >
         <template x-for="(slide, index) in slides" :key="index">
@@ -49,41 +34,6 @@
 
         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent"></div>
         
-        <nav :class="{ 'bg-white shadow-md': scrolled, 'bg-transparent': !scrolled }" class="sticky top-0 z-50 w-full h-20 transition-colors duration-300">
-            <div class="container mx-auto px-6 h-full">
-                <div class="flex justify-between items-center h-full">
-                    <a href="{{ route('homepage') }}" class="text-2xl font-bold tracking-wide" :class="{'text-gray-800': scrolled, 'text-white': !scrolled}">Pesantren Pusat</a>
-                    
-                    <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
-                        <a href="{{ route('homepage') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Home</a>
-                        <a href="{{ route('program.index') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Program</a><a href="{{ route('program.index') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Program</a>
-                        <a href="{{ route('berita.index') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Berita</a>
-                        <a href="{{ route('galeri.index') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Galeri</a>
-                        <a href="{{ route('pengurus.index') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Struktur</a>
-                        <a href="{{ route('tokoh.sejarah.index') }}" :class="{'text-gray-600 hover:text-blue-600': scrolled, 'text-white hover:text-blue-300': !scrolled}" class="transition-colors">Sejarah</a>
-                        <a href="#kontak" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">Kontak Kami</a>
-                    </div>
-
-                    <div class="md:hidden">
-                        <button @click="navOpen = !navOpen" :class="{'text-gray-800': scrolled, 'text-white': !scrolled}" class="focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path :class="{'hidden': navOpen, 'inline-flex': !navOpen }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                                <path :class="{'hidden': !navOpen, 'inline-flex': navOpen }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div :class="{'block': navOpen, 'hidden': !navOpen}" class="md:hidden bg-white text-gray-600">
-                <a href="{{ route('homepage') }}" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
-                <a href="{{ route('berita.index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100">Berita</a>
-                <a href="{{ route('galeri.index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100">Galeri</a>
-                <a href="{{ route('pengurus.index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100">Struktur</a>
-                <a href="{{ route('tokoh.sejarah.index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100">Sejarah</a>
-                <a href="#kontak" class="block py-2 px-4 text-sm hover:bg-gray-100">Kontak Kami</a>
-            </div>
-        </nav>
-
         <div class="relative container mx-auto px-6 flex flex-col items-center justify-center text-center text-white" style="height: 80vh;">
             <h1 class="text-4xl md:text-6xl font-extrabold !leading-tight mb-4">Membentuk Generasi Unggul, Berakhlak Qur'ani</h1>
             <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">Menjadi pusat pendidikan Islam yang modern dan berintegritas, mencetak pemimpin masa depan yang bertakwa dan berwawasan luas.</p>
@@ -105,7 +55,9 @@
     <section class="bg-blue-600 text-white">
         <div class="container mx-auto py-6 px-6 text-center">
             <h2 class="text-2xl font-bold mb-2">Pendaftaran Santri Baru Telah Dibuka: {{ $pendaftaranAktif->nama_periode }}!</h2>
-            <p class="text-blue-200 mb-4">Periode: {{ $pendaftaranAktif->tanggal_mulai->format('d M') }} - {{ $pendaftaranAktif->tanggal_selesai->format('d M Y') }}</p>
+            <p class="text-blue-200 mb-4">
+                Periode: {{ \Carbon\Carbon::parse($pendaftaranAktif->tanggal_mulai)->format('d M') }} - {{ \Carbon\Carbon::parse($pendaftaranAktif->tanggal_selesai)->format('d M Y') }}
+            </p>
             <div class="flex flex-wrap justify-center gap-4">
                 @foreach ($pendaftaranAktif->kontakPanitia as $kontak)
                     <a href="https://wa.me/{{ $kontak->nomor_wa }}" target="_blank" class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-2 px-5 rounded-lg shadow-md transition-transform transform hover:scale-105">
@@ -153,7 +105,7 @@
                             <p class="text-sm text-gray-500 mb-2">{{ $berita->created_at->format('d F Y') }}</p>
                             <h3 class="text-xl font-semibold mb-3 text-gray-900 leading-snug h-20">{{ Str::limit(strip_tags($berita->judul), 60) }}</h3>
                             <a href="{{ route('berita.show', $berita) }}" class="text-blue-600 hover:text-blue-700 font-semibold group-hover:text-blue-800 transition-colors">
-                                Baca Selengkapnya <span class="group-hover:ml-1 transition-all">&rarr;</span>
+                                Baca Selengkapnya <span class="group-hover:ml-1 transition-all">→</span>
                             </a>
                         </div>
                     </div>
@@ -215,64 +167,47 @@
         </div>
     </section>
 
+    @if($tokohTerkemuka->isNotEmpty())
     <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-sm font-bold uppercase text-blue-500 mb-2">Apresiasi</h2>
-            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-16">Apa Kata Mereka?</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @forelse($testimonis as $testimoni)
-                    <div class="bg-white p-8 rounded-lg shadow-lg relative">
-                        <div class="absolute top-0 left-8 -translate-y-1/2 text-8xl text-blue-100 opacity-50">&ldquo;</div>
-                        <p class="text-gray-600 mb-6 mt-4 italic relative z-10">"{{ $testimoni->kutipan }}"</p>
-                        <div class="flex items-center justify-center">
-                            <img class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-blue-200" src="{{ $testimoni->foto ? asset('storage/' . $testimoni->foto) : 'https://i.pravatar.cc/150?u=' . $testimoni->id }}" alt="Avatar">
-                            <div>
-                                <p class="font-semibold text-gray-900">{{ $testimoni->nama }}</p>
-                                <p class="text-sm text-gray-500">{{ $testimoni->jabatan }}</p>
-                            </div>
-                        </div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold uppercase text-blue-500 mb-2">Figur Inspiratif</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Tokoh & Sejarah Pesantren</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($tokohTerkemuka as $tokoh)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden text-center group">
+                    <img src="{{ asset('storage/' . $tokoh->foto) }}" alt="Foto {{ $tokoh->nama_lengkap }}" class="w-full h-80 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">{{ $tokoh->nama_lengkap }}</h3>
+                        <p class="text-sm text-blue-600 font-semibold">{{ $tokoh->periode_jabatan }}</p>
+                        <p class="text-gray-500 mt-3 h-24">{{ Str::limit(strip_tags($tokoh->kisah_historis), 120) }}</p>
                     </div>
-                @empty
-                    <p class="md:col-span-3 text-gray-500">Belum ada testimoni untuk ditampilkan.</p>
-                @endforelse
+                </div>
+                @endforeach
+            </div>
+            <div class="text-center mt-16">
+                <a href="{{ route('tokoh.sejarah.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">Lihat Semua Tokoh</a>
             </div>
         </div>
     </section>
+    @endif
 
-    <footer id="kontak" class="bg-gray-900 text-white py-20">
+    <section class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="md:col-span-1">
-                    <h3 class="text-xl font-bold mb-4">Pesantren Pusat</h3>
-                    <p class="text-gray-400 leading-relaxed">Membentuk generasi Rabbani yang cerdas, mandiri, dan berakhlakul karimah.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-4 text-gray-200">Navigasi Cepat</h3>
-                    <ul class="space-y-3">
-                        <li><a href="{{ route('berita.index') }}" class="text-gray-400 hover:text-white transition-colors">Berita</a></li>
-                        <li><a href="{{ route('galeri.index') }}" class="text-gray-400 hover:text-white transition-colors">Galeri</a></li>
-                        <li><a href="{{ route('pengurus.index') }}" class="text-gray-400 hover:text-white transition-colors">Struktur Pengurus</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-4 text-gray-200">Tentang Kami</h3>
-                    <ul class="space-y-3">
-                         <li><a href="{{ route('tokoh.sejarah.index') }}" class="text-gray-400 hover:text-white transition-colors">Sejarah</a></li>
-                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Visi & Misi</a></li>
-                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Program & Fasilitas</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-4 text-gray-200">Hubungi Kami</h3>
-                    <p class="text-gray-400">Jl. Pendidikan No. 1, Kota Santri</p>
-                    <p class="text-gray-400">Email: info@pesantrenpusat.id</p>
-                </div>
-            </div>
-            <div class="mt-16 border-t border-gray-700 pt-8 text-center text-gray-500">
-                <p>&copy; {{ date('Y') }} Pesantren Pusat. Hak Cipta Dilindungi.</p>
+            <div class="bg-blue-600 rounded-2xl shadow-xl text-white p-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Siap Menjadi Bagian dari Kami?</h2>
+                <p class="text-blue-200 max-w-2xl mx-auto mb-8">Mari bergabung dengan keluarga besar Pesantren Pusat dan mulailah perjalanan pendidikan yang akan mengubah hidup Anda.</p>
+                @if ($pendaftaranAktif)
+                    <a href="https://wa.me/{{ $pendaftaranAktif->kontakPanitia->first()->nomor_wa ?? '' }}" target="_blank" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 inline-block">
+                        Daftar Sekarang
+                    </a>
+                @else
+                    <span class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg inline-block opacity-50 cursor-not-allowed">
+                        Pendaftaran Belum Dibuka
+                    </span>
+                @endif
             </div>
         </div>
-    </footer>
-
-</body>
-</html>
+    </section>
+@endsection

@@ -1,25 +1,21 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class BeritaController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        $semuaBerita = Berita::latest()->paginate(10);
-
-        return view('berita.index', [
-            'semuaBerita' => $semuaBerita
-        ]);
+        $beritas = Berita::latest()->paginate(9);
+        return view('berita.index', compact('beritas'));
     }
 
-    public function show(Berita $berita): View
+    public function show(Berita $berita)
     {
-        return view('berita.show', [
-            'berita' => $berita
-        ]);
+        $latestBerita = Berita::latest()->where('id', '!=', $berita->id)->take(5)->get();
+        return view('berita.show', compact('berita', 'latestBerita'));
     }
 }

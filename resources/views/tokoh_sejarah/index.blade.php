@@ -1,41 +1,47 @@
 @extends('layouts.app')
 
-@section('title', 'Jejak Kepemimpinan - Pesantren Pusat')
-
 @section('content')
-<header class="bg-gray-100 py-12">
-    <div class="container mx-auto px-6 text-center">
-        <h1 class="text-4xl font-bold text-gray-800">Jejak Kepemimpinan</h1>
-        <p class="text-gray-600 mt-2">Menghormati para pendiri dan pimpinan yang telah mendedikasikan hidupnya.</p>
-    </div>
-</header>
+<div class="bg-gray-50 pt-24 pb-16">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">Sejarah & Tokoh Pendiri</h1>
+            <p class="text-gray-500 mt-2">Mengenal lebih dekat jejak langkah dan para tokoh di balik Pesantren Pusat.</p>
+        </div>
 
-<div class="container mx-auto p-8">
-    <div class="max-w-4xl mx-auto space-y-12">
-        @forelse ($semuaTokoh as $tokoh)
-            <div class="md:flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
-                @if($tokoh->foto)
-                    <img src="{{ asset('storage/' . $tokoh->foto) }}" alt="Foto {{ $tokoh->nama }}" class="w-full h-64 md:w-1/3 object-cover">
-                @else
-                    <div class="w-full h-64 md:w-1/3 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500">Foto tidak tersedia</span>
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Tokoh & Pimpinan</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                @forelse ($tokohs as $tokoh)
+                    <div class="text-center p-4">
+                        <img src="{{ asset('storage/' . $tokoh->foto) }}" alt="{{ $tokoh->nama }}" class="w-40 h-40 rounded-full mx-auto mb-4 object-cover shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800">{{ $tokoh->nama }}</h3>
+                        <p class="text-gray-500">{{ $tokoh->periode_jabatan }}</p>
                     </div>
-                @endif
-                <div class="p-8">
-                    <h2 class="text-3xl font-bold text-gray-900">{{ $tokoh->nama }}</h2>
-                    <p class="text-lg text-blue-500 mb-4 font-semibold">{{ $tokoh->periode_jabatan }}</p>
-                    <div class="prose max-w-none text-gray-700">
-                        {!! $tokoh->kisah !!}
-                    </div>
+                @empty
+                    <p class="col-span-full text-center text-gray-500">Data tokoh sejarah belum tersedia.</p>
+                @endforelse
+            </div>
+        </div>
+
+        <div class="space-y-12">
+            @if($sejarahSmp)
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Sejarah SMP Pesantren Pusat</h2>
+                <div class="prose max-w-none text-gray-600">
+                    {!! $sejarahSmp->konten !!}
                 </div>
             </div>
-        @empty
-            <p class="text-center text-gray-500">Data tokoh dan sejarah akan segera ditampilkan.</p>
-        @endforelse
-    </div>
+            @endif
 
-    <div class="mt-12">
-        {{ $semuaTokoh->links('vendor.pagination.tailwind') }}
+            @if($sejarahSma)
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Sejarah SMA Pesantren Pusat</h2>
+                <div class="prose max-w-none text-gray-600">
+                    {!! $sejarahSma->konten !!}
+                </div>
+            </div>
+            @endif
+        </div>
     </div>
 </div>
 @endsection

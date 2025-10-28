@@ -1,18 +1,15 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class PengurusController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        $semuaPengurus = Pengurus::where('is_active', true)->orderBy('jabatan', 'asc')->paginate(12);
-
-        return view('pengurus.index', [
-            'semuaPengurus' => $semuaPengurus,
-        ]);
+        $pengurus = Pengurus::orderBy('urutan', 'asc')->get();
+        return view('pengurus.index', compact('pengurus'));
     }
 }
