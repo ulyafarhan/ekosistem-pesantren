@@ -10,7 +10,7 @@ class TokohSejarahController extends Controller
 {
     public function index(): View
     {
-        $semuaTokoh = TokohSejarah::orderBy('periode_jabatan', 'asc')->get();
+        $semuaTokoh = TokohSejarah::orderBy('periode_jabatan', 'asc')->paginate(5);
 
         return view('tokoh_sejarah.index', [
             'semuaTokoh' => $semuaTokoh,

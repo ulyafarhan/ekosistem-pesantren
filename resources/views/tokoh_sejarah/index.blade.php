@@ -14,7 +14,13 @@
     <div class="max-w-4xl mx-auto space-y-12">
         @forelse ($semuaTokoh as $tokoh)
             <div class="md:flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="{{ asset('storage/' . $tokoh->foto) }}" alt="Foto {{ $tokoh->nama }}" class="w-full h-64 md:w-1/3 object-cover">
+                @if($tokoh->foto)
+                    <img src="{{ asset('storage/' . $tokoh->foto) }}" alt="Foto {{ $tokoh->nama }}" class="w-full h-64 md:w-1/3 object-cover">
+                @else
+                    <div class="w-full h-64 md:w-1/3 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">Foto tidak tersedia</span>
+                    </div>
+                @endif
                 <div class="p-8">
                     <h2 class="text-3xl font-bold text-gray-900">{{ $tokoh->nama }}</h2>
                     <p class="text-lg text-blue-500 mb-4 font-semibold">{{ $tokoh->periode_jabatan }}</p>
@@ -26,6 +32,10 @@
         @empty
             <p class="text-center text-gray-500">Data tokoh dan sejarah akan segera ditampilkan.</p>
         @endforelse
+    </div>
+
+    <div class="mt-12">
+        {{ $semuaTokoh->links('vendor.pagination.tailwind') }}
     </div>
 </div>
 @endsection

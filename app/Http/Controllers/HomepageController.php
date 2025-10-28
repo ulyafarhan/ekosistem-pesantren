@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HeroSlider;
 use App\Models\Berita;
 use App\Models\Galeri;
+use App\Models\HeroSlider;
+use App\Models\ProgramDanFasilitas as Program;
+use App\Models\Testimoni;
+use App\Models\TokohSejarah;
 use App\Models\PeriodePendaftaran;
-use App\Models\ProgramDanFasilitas;
-use App\Models\SejarahUnitPendidikan;
 use Illuminate\View\View;
 
 class HomepageController extends Controller
@@ -15,31 +16,45 @@ class HomepageController extends Controller
     public function index(): View
     {
         $heroSliders = HeroSlider::where('is_active', true)
-            ->whereNotNull('gambar') // <-- KUNCI PERBAIKAN
+            ->whereNotNull('gambar')
+            ->where('gambar', '!=', '')
             ->get()
             ->shuffle();
-        // Ambil 3 berita terbaru untuk ditampilkan
-        $beritaTerbaru = Berita::latest()->take(3)->get();
 
-        // Ambil 3 program/fasilitas unggulan (bisa disesuaikan)
-        $programUnggulan = ProgramDanFasilitas::where('tipe', 'program')->take(3)->get();
+        $beritaTerbaru = Berita::whereNotNull('thumbnail')
+            ->where('thumbnail', '!=', '')
+            ->latest()
+            ->take(3)
+            ->get();
 
-        // Ambil sejarah singkat (misalnya dari unit SMP)
-        $sejarahSingkat = SejarahUnitPendidikan::find(1); // Asumsi ID 1 adalah untuk Sejarah Umum/SMP
+        $programUnggulan = Program::latest()->take(3)->get();
 
-        // Logika untuk pendaftaran aktif tetap sama
+        $sejarahSingkat = TokohSejarah::orderBy('periode_jabatan', 'asc')->first();
+
+        $galeriTerbaru = Galeri::whereNotNull('media')
+            ->where('media', '!=', '')
+            ->latest()
+            ->take(3)
+            ->get();
+
+        // Logika untuk pendaftaran aktif
         $pendaftaranAktif = PeriodePendaftaran::where('tanggal_mulai', '<=', now())
             ->where('tanggal_selesai', '>=', now())
             ->with('kontakPanitia')
             ->first();
 
-        // Kirim semua data ke view
+        // Mengambil testimoni secara acak
+        $testimonis = Testimoni::where('is_active', true)->inRandomOrder()->take(3)->get();
+
+        // Kirim semua data yang sudah bersih ke view
         return view('homepage', [
             'heroSliders' => $heroSliders,
             'beritaTerbaru' => $beritaTerbaru,
             'programUnggulan' => $programUnggulan,
             'sejarahSingkat' => $sejarahSingkat,
+            'galeriTerbaru' => $galeriTerbaru,
             'pendaftaranAktif' => $pendaftaranAktif,
+            'testimonis' => $testimonis,
         ]);
     }
 }

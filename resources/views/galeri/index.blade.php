@@ -11,20 +11,28 @@
         </div>
     </header>
 
-    <div class="container mx-auto p-8">
+<div class="container mx-auto p-8">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @forelse ($semuaGaleri as $item)
-                @if ($item->tipe === 'foto')
-                    <div @click="open = true; imageSrc = '{{ asset('storage/' . $item->media) }}'" class="group relative cursor-pointer">
+                <div @click="open = true; imageSrc = '{{ asset('storage/' . $item->media) }}'" class="group relative cursor-pointer">
+                    @if($item->media)
                         <img src="{{ asset('storage/' . $item->media) }}" alt="{{ $item->judul }}" class="w-full h-64 object-cover rounded-lg shadow-md">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center p-4">
-                            <p class="text-white text-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity">{{ $item->judul }}</p>
+                    @else
+                        <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg shadow-md">
+                            <span class="text-gray-500">Gambar tidak tersedia</span>
                         </div>
+                    @endif
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center p-4">
+                        <p class="text-white text-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity">{{ $item->judul }}</p>
                     </div>
-                @endif
+                </div>
             @empty
-                <p class="col-span-full text-center text-gray-500">Belum ada foto di galeri.</p>
+                <p class="col-span-full text-center text-gray-500">Belum ada item di galeri.</p>
             @endforelse
+        </div>
+
+        <div class="mt-12">
+            {{ $semuaGaleri->links('vendor.pagination.tailwind') }}
         </div>
     </div>
 

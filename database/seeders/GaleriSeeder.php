@@ -21,6 +21,11 @@ class GaleriSeeder extends Seeder
             ['judul' => 'Pawai Obor Menyambut Tahun Baru Islam 1447 H', 'tipe' => 'foto'],
             ['judul' => 'Dokumentasi Program Santri Mengabdi di Pedalaman Kalimantan', 'tipe' => 'foto'],
             ['judul' => 'Ceramah Umum oleh Syaikh dari Al-Azhar, Kairo', 'tipe' => 'video', 'file_media' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],
+            ['judul' => 'Pentas Seni Santri: Dari Nasyid hingga Teater Islami', 'tipe' => 'foto'],
+            ['judul' => 'Gotong Royong Membersihkan Lingkungan Pesantren', 'tipe' => 'foto'],
+            ['judul' => 'Suasana Ceria di Asrama Santriwati', 'tipe' => 'foto'],
+            ['judul' => 'Tutorial Kaligrafi oleh Juara Kaligrafi Internasional', 'tipe' => 'video', 'file_media' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],
+            ['judul' => 'Momen Haru Pelepasan Santri untuk Program Beasiswa ke Luar Negeri', 'tipe' => 'foto'],
         ];
 
         foreach ($galeris as $item) {
@@ -31,7 +36,5 @@ class GaleriSeeder extends Seeder
                 'file_media' => $item['file_media'] ?? 'https://picsum.photos/seed/' . Str::slug($item['judul']) . '/800/600',
             ]);
         }
-
-        Galeri::factory(5)->create();
     }
 }

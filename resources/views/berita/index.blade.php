@@ -15,12 +15,18 @@
         @forelse ($semuaBerita as $berita)
             <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                 <a href="{{ route('berita.show', $berita) }}">
-                    <img src="{{ asset('storage/' . $berita->thumbnail) }}" alt="{{ $berita->judul }}" class="w-full h-56 object-cover">
+                    @if($berita->thumbnail)
+                        <img src="{{ asset('storage/' . $berita->thumbnail) }}" alt="{{ $berita->judul }}" class="w-full h-56 object-cover">
+                    @else
+                        <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
+                            <span class="text-gray-500">Gambar tidak tersedia</span>
+                        </div>
+                    @endif
                 </a>
                 <div class="p-6">
-                    <p class="text-sm text-gray-500 mb-2">{{ $berita->created_at->format('d F Y') }}</p>
-                    <h3 class="text-xl font-semibold mb-3 h-20">{{ Str::limit($berita->judul, 60) }}</h3>
-                    <a href="{{ route('berita.show', $berita) }}" class="text-blue-500 hover:text-blue-600 font-semibold">Baca Selengkapnya &rarr;</a>
+                    <p class="text-sm text-gray-500 mb-2">{{ optional($berita->created_at)->format('d F Y') }}</p>
+                    <h3 class="text-xl font-semibold mb-3 h-20">{{ Str::limit(strip_tags($berita->judul), 60) }}</h3>
+                    <a href="{{ route('berita.show', $berita) }}" class="text-blue-500 hover:text-blue-600 font-semibold">Baca Selengkapnya →</a>
                 </div>
             </div>
         @empty
@@ -29,7 +35,7 @@
     </div>
 
     <div class="mt-12">
-        {{ $semuaBerita->links() }}
+        {{ $semuaBerita->links('vendor.pagination.tailwind') }}
     </div>
 </div>
 @endsection

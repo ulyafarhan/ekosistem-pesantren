@@ -8,11 +8,10 @@
         <header class="mb-8">
             <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">{{ $berita->judul }}</h1>
             <p class="text-gray-500">
-                {{-- PERBAIKAN: Gunakan nullsafe operator (?->) atau optional() helper --}}
                 @if ($berita->user)
-                    Oleh <span class="font-semibold">{{ $berita->user->name }}</span> &bull; 
+                    Oleh <span class="font-semibold">{{ optional($berita->user)->name }}</span> • 
                 @endif
-                {{ $berita->created_at->format('d F Y') }}
+                {{ optional($berita->created_at)->format('d F Y') }}
             </p>
         </header>
 

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ProgramDanFasilitasSeeder::class,
             SejarahUnitPendidikanSeeder::class,
             KontakPanitiaSeeder::class, // Memastikan seeder ini juga dipanggil
+            TestimoniSeeder::class,
         ]);
     }
 }

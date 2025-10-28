@@ -9,7 +9,7 @@ class PengurusController extends Controller
 {
     public function index(): View
     {
-        $semuaPengurus = Pengurus::where('is_active', true)->orderBy('jabatan', 'asc')->get();
+        $semuaPengurus = Pengurus::where('is_active', true)->orderBy('jabatan', 'asc')->paginate(12);
 
         return view('pengurus.index', [
             'semuaPengurus' => $semuaPengurus,
