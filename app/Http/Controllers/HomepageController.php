@@ -17,45 +17,39 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        // 1. Data untuk Hero Slider
-        $heroSliders = HeroSlider::where('is_active', true)->orderBy('order', 'asc')->get();
+        $heroSliders = HeroSlider::where('is_active', true)->orderBy('created_at', 'desc')->get();
 
-        // 2. Data untuk Pengumuman Pendaftaran
-        $pendaftaranAktif = PeriodePendaftaran::with('kontakPanitia')
-            ->where('tanggal_mulai', '<=', Carbon::now())
-            ->where('tanggal_selesai', '>=', Carbon::now())
+        // PERBAIKAN: Tambahkan 'brosur' untuk di-load bersamaan
+        $pendaftaranAktif = PeriodePendaftaran::with(['kontakPanitia', 'brosur'])
+            ->where('status', 'dibuka')
+            ->where('tanggal_buka', '<=', Carbon::now())
+            ->where('tanggal_tutup', '>=', Carbon::now())
             ->first();
 
-        // 3. Data untuk Program Unggulan (ambil 3 yang terbaru)
-        $programUnggulan = ProgramDanFasilitas::where('jenis', 'program')
-            ->latest()
-            ->take(3)
-            ->get();
-
-        // 4. Data untuk Berita Terbaru (ambil 3 berita)
+        $programDanFasilitas = ProgramDanFasilitas::latest()->first();
         $beritaTerbaru = Berita::latest()->take(3)->get();
-
-        // 5. Data untuk Sejarah Singkat (ambil dari unit SMA sebagai default)
-        $sejarahSingkat = SejarahUnitPendidikan::where('nama_unit', 'SMA')
-            ->first();
-
-        // 6. Data untuk Galeri Terbaru (ambil 6 foto)
-        $galeriTerbaru = Galeri::latest()->take(6)->get();
-
-        // 7. Data untuk Testimoni (ambil 3 testimoni)
-        $testimonis = Testimoni::latest()->take(3)->get();
-
+        $sejarahSingkat = SejarahUnitPendidikan::latest()->first();
+        $galeriTerbaru = Galeri::latest()->take(3)->get();
+        $testimonis = Testimoni::where('is_active', true)->latest()->take(3)->get();
         $tokohTerkemuka = TokohSejarah::latest()->take(3)->get();
+
+        $statistics = [
+            ['target' => 10, 'label' => 'Tahun Pengalaman', 'suffix' => '+'],
+            ['target' => 1000, 'label' => 'Alumni Berprestasi', 'suffix' => '+'],
+            ['target' => 50, 'label' => 'Tenaga Pendidik', 'suffix' => '+'],
+            ['target' => 95, 'label' => 'Kepuasan Wali Santri', 'suffix' => '%']
+        ];
 
         return view('homepage', compact(
             'heroSliders',
             'pendaftaranAktif',
-            'programUnggulan',
+            'programDanFasilitas',
             'beritaTerbaru',
             'sejarahSingkat',
             'galeriTerbaru',
             'testimonis',
-            'tokohTerkemuka'
+            'tokohTerkemuka',
+            'statistics'
         ));
     }
 }

@@ -1,45 +1,31 @@
-/* Tokens (opsional, sesuaikan dengan skema kamu) */
-:root{
-  --brand:#2563eb; --brand-700:#1d4ed8; --ink:#0f172a; --muted:#64748b;
-}
-.shadow-soft{box-shadow:0 8px 24px rgba(15,23,42,.08)}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Nav link dengan underline animasi, teks kecil */
-.nav-link {
-  position: relative;
-  color: #334155;
-  font-size: .9rem; /* lebih kecil */
-  padding-bottom: .125rem;
-  transition: color .25s ease;
-}
-.nav-link:hover { color: var(--brand); }
-.nav-link.active { color: var(--brand-700); }
-.nav-link::after {
-  content:'';
-  position:absolute; left:0; bottom:-2px;
-  width:0; height:2px; background:var(--brand);
-  transition:width .25s ease;
-}
-.nav-link:hover::after, .nav-link.active::after { width:100%; }
+@layer components {
+    /* Style untuk link navigasi di desktop */
+    .nav-link {
+        @apply font-medium text-neutral-600 transition-colors duration-300 hover:text-primary;
+    }
+    .active-nav-link {
+        @apply text-primary font-semibold;
+    }
 
-/* Button primary kecil */
-.btn-primary{
-  display:inline-flex; align-items:center; gap:.4rem;
-  padding:.5rem .75rem; border-radius:.75rem;
-  background:linear-gradient(135deg,var(--brand),var(--brand-700));
-  color:#fff; font-weight:600; font-size:.85rem;
-  box-shadow:0 6px 16px rgba(37,99,235,.18);
-  transition:filter .15s ease, transform .15s ease;
-}
-.btn-primary:hover{ filter:brightness(.96); }
+    /* Style untuk link di dalam dropdown desktop */
+    .dropdown-link {
+        @apply block w-full px-4 py-2 text-left text-neutral-700 hover:bg-neutral-100 hover:text-primary transition-colors duration-200;
+    }
 
-/* Mobile link kecil, rapi, dengan hover subtle */
-.mobile-link{
-  display:block; padding:.5rem .625rem; border-radius:.5rem;
-  color:#334155; font-size:.95rem; transition:all .2s ease;
-}
-.mobile-link:hover{ background:#f1f5f9; color:var(--brand); }
-.active-mobile{ background:#eef2ff; color:var(--brand-700); font-weight:600; }
+    /* Style PENTING untuk link di menu mobile */
+    .mobile-link {
+        @apply text-2xl font-bold text-neutral-700 transition-colors duration-300 py-2;
+    }
+    .mobile-link.active {
+        @apply text-primary;
+    }
 
-/* Body copy kecil yang tetap nyaman */
-body { font-size: 15px; } /* global smaller, tetap terbaca */
+    /* Style untuk tombol utama */
+    .btn-primary {
+        @apply bg-primary text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-primary-dark transition-colors duration-300 shadow-sm;
+    }
+}

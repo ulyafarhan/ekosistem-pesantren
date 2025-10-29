@@ -9,7 +9,7 @@ class PengurusController extends Controller
 {
     public function index()
     {
-        $pengurus = Pengurus::orderBy('urutan', 'asc')->get();
+        $pengurus = Pengurus::latest()->get();
         return view('pengurus.index', compact('pengurus'));
     }
 }

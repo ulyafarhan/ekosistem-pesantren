@@ -1,44 +1,50 @@
 @extends('layouts.app')
 
+@section('title', 'Program & Fasilitas - Pesantren Pusat')
+@section('description', 'Jelajahi program pendidikan unggulan dan fasilitas modern yang kami sediakan untuk mendukung proses belajar mengajar santri.')
+
 @section('content')
-<div class="bg-white pt-24 pb-16">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">Program & Fasilitas</h1>
-            <p class="text-gray-500 mt-2">Mendukung pendidikan holistik dengan program unggulan dan fasilitas modern.</p>
+<div class="py-20">
+    <div class="container mx-auto px-6 max-w-7xl">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Program & Fasilitas</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Mendukung pendidikan holistik dengan kurikulum unggulan dan lingkungan belajar yang modern serta representatif.</p>
         </div>
 
-        <div class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Program Unggulan</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @forelse ($programs as $program)
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-900">{{ $program->nama }}</h3>
-                        <div class="text-gray-600 prose max-w-none">
-                           {!! $program->deskripsi !!}
+        @if($data)
+            <section id="program" class="mb-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Program Pendidikan</h2>
+                        <div class="prose max-w-none">
+                            {!! $data->program_pendidikan !!}
                         </div>
                     </div>
-                @empty
-                    <p class="col-span-3 text-center text-gray-500">Program unggulan akan segera ditambahkan.</p>
-                @endforelse
-            </div>
-        </div>
+                    <div class="order-1 lg:order-2">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" alt="Program Pendidikan" class="rounded-2xl shadow-xl w-full h-full object-cover">
+                    </div>
+                </div>
+            </section>
 
-        <div>
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Fasilitas Kami</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @forelse ($fasilitas as $item)
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-900">{{ $item->nama }}</h3>
-                         <div class="text-gray-600 prose max-w-none">
-                           {!! $item->deskripsi !!}
+            <section id="fasilitas">
+                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1583413498385-39722a0a5525?q=80&w=2070&auto=format&fit=crop" alt="Fasilitas Pesantren" class="rounded-2xl shadow-xl w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Fasilitas Unggulan</h2>
+                        <div class="prose max-w-none">
+                            {!! $data->fasilitas !!}
                         </div>
                     </div>
-                @empty
-                    <p class="col-span-3 text-center text-gray-500">Data fasilitas akan segera ditambahkan.</p>
-                @endforelse
+                </div>
+            </section>
+        @else
+            <div class="text-center py-24 bg-white rounded-xl border border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-800">Konten Belum Tersedia</h2>
+                <p class="mt-2 text-gray-500">Informasi mengenai program dan fasilitas akan segera kami tampilkan.</p>
             </div>
-        </div>
+        @endif
     </div>
 </div>
 @endsection

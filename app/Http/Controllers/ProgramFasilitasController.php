@@ -9,9 +9,8 @@ class ProgramFasilitasController extends Controller
 {
     public function index()
     {
-        $programs = ProgramDanFasilitas::where('jenis', 'program')->paginate(9);
-        $fasilitas = ProgramDanFasilitas::where('jenis', 'fasilitas')->paginate(9);
+        $data = ProgramDanFasilitas::latest()->first();
 
-        return view('program.index', compact('programs', 'fasilitas'));
+        return view('program.index', compact('data'));
     }
 }
