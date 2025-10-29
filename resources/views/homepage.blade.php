@@ -61,30 +61,37 @@
 
     <section id="tentang-kami" class="py-24">
         <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
+            <div
+                x-data="statisticsCounter(@json($statistics ?? []))"
+                @intersect.once="start()"
+                class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            >
+                {{-- Kolom Teks (dengan animasi) --}}
+                <div x-show="started"
+                    x-transition:enter="transition ease-out duration-1000"
+                    x-transition:enter-start="opacity-0 -translate-x-8"
+                    x-transition:enter-end="opacity-100 translate-x-0">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Pendidikan Holistik untuk Masa Depan Bangsa</h2>
                     <p class="mt-6 text-lg leading-relaxed text-gray-600">
                         Kami berkomitmen menyediakan pendidikan yang tidak hanya unggul dalam akademik dan keagamaan, tetapi juga dalam pembentukan karakter. Dengan memadukan kurikulum modern dan nilai-nilai Islam, kami bertujuan membentuk santri yang berakhlak mulia, mandiri, dan siap menjadi pemimpin di masa depan.
                     </p>
                 </div>
+
+                {{-- Kolom Angka (dengan animasi dari controller) --}}
                 <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-2xl border border-gray-200/80 text-center">
-                        <span class="text-4xl font-extrabold text-primary-blue">10+</span>
-                        <p class="mt-2 font-semibold text-gray-600">Tahun Pengalaman</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-200/80 text-center">
-                        <span class="text-4xl font-extrabold text-primary-blue">1000+</span>
-                        <p class="mt-2 font-semibold text-gray-600">Alumni Berprestasi</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-200/80 text-center">
-                        <span class="text-4xl font-extrabold text-primary-blue">50+</span>
-                        <p class="mt-2 font-semibold text-gray-600">Tenaga Pendidik</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-200/80 text-center">
-                        <span class="text-4xl font-extrabold text-primary-blue">95%</span>
-                        <p class="mt-2 font-semibold text-gray-600">Kepuasan Wali Santri</p>
-                    </div>
+                    <template x-for="(stat, index) in items" :key="index">
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/80 text-center"
+                            x-show="started"
+                            x-transition:enter="transition ease-out duration-500"
+                            :style="`transition-delay: ${index * 150}ms`"
+                            x-transition:enter-start="opacity-0 scale-90"
+                            x-transition:enter-end="opacity-100 scale-100">
+                            <span class="text-4xl font-extrabold text-primary-blue">
+                                <span x-text="stat.value"></span><span x-text="stat.suffix"></span>
+                            </span>
+                            <p class="mt-2 font-semibold text-gray-600" x-text="stat.label"></p>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -356,3 +363,41 @@
     @endif
 </div>
 @endsection
+@push('scripts')
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('statisticsCounter', (initialStats = []) => ({
+            started: false,
+            items: initialStats.map(stat => ({ ...stat, value: 0 })),
+
+            start() {
+                this.started = true;
+                this.animateCounters();
+            },
+
+            animateCounters() {
+                this.items.forEach((stat) => {
+                    const target = stat.target;
+                    if (typeof target === 'undefined') return;
+
+                    const duration = 1500;
+                    const stepTime = 20;
+                    const totalSteps = duration / stepTime;
+                    const increment = target / totalSteps;
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            clearInterval(timer);
+                            stat.value = target;
+                        } else {
+                            stat.value = Math.ceil(current);
+                        }
+                    }, stepTime);
+                });
+            }
+        }));
+    });
+</script>
+@endpush
