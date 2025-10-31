@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Berita & Artikel - Pesantren Pusat'); ?>
 <?php $__env->startSection('description', 'Ikuti semua informasi, kegiatan, dan prestasi terkini seputar Pesantren Pusat.'); ?>
 

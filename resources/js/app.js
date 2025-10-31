@@ -1,36 +1,54 @@
 import './bootstrap';
-import './elements/turbo-echo-stream-tag';
-import './libs';
+import * as Turbo from '@hotwired/turbo';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.getElementById('mobile-open');
-  const menu = document.getElementById('mobile-menu');
-  if (menuBtn && menu) menuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
+document.addEventListener("turbo:load", function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('sudah-muncul')
 
-  // Slider Katalog
-  const container = document.getElementById('catalog-container');
-  const prev = document.getElementById('catalog-prev');
-  const next = document.getElementById('catalog-next');
-  if (container && prev && next) {
-    const scroller = container.querySelector('div');
-    prev.addEventListener('click', () => scroller.scrollBy({ left: -320, behavior: 'smooth' }));
-    next.addEventListener('click', () => scroller.scrollBy({ left: 320, behavior: 'smooth' }));
-  }
+                const numberElements = entry.target.querySelectorAll('.stat-number');
+                if (numberElements.length > 0) {
+                    numberElements.forEach(el => {
+                        if (el.dataset.animated) return;
+                        el.dataset.animated = 'true';
 
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+                        const target = parseInt(el.dataset.target, 10);
+                        const finalDisplay = el.dataset.finalDisplay;
+                        animateCounter(el, target, finalDisplay);
+                    });
+                }
+                
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.1
+    });
 
-  // Count-up stats
-  document.querySelectorAll('.stat-number').forEach(el => {
-    const to = parseInt(el.getAttribute('data-count-to') || '0', 10);
-    let cur = 0;
-    const step = Math.max(1, Math.round(to / 40));
-    const timer = setInterval(() => {
-      cur += step; if (cur >= to) { cur = to; clearInterval(timer); }
-      el.textContent = (to >= 100 ? `${cur}+` : cur);
-    }, 40);
-  });
+    const elementsToAnimate = document.querySelectorAll('.animasi-scroll');
+    elementsToAnimate.forEach(el => {
+        observer.observe(el);
+    });
 });
+
+function animateCounter(element, target, finalDisplay) {
+    const duration = 2000;
+    let startTime = null;
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        element.innerHTML = Math.floor(progress * target);
+        if (progress < 1) {
+            requestAnimationFrame(animation);
+        } else {
+            element.innerHTML = finalDisplay;
+        }
+    }
+    requestAnimationFrame(animation);
+}
+
+document.addEventListener("turbo:load", function() {
+    initializePageScripts();
+})

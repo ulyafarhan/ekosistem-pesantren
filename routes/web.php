@@ -3,6 +3,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SejarahUnitPendidikanController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\ProgramFasilitasController;
 use App\Http\Controllers\TokohSejarahController;
@@ -30,3 +31,5 @@ Route::get('/program', [ProgramFasilitasController::class, 'index']);
 
 // Atau ubah rute yang ada menjadi:
 Route::get('/program', [ProgramFasilitasController::class, 'index'])->name('program.index');
+
+Route::get('/sejarah-unit-pendidikan', [SejarahUnitPendidikanController::class, 'index'])->name('sejarah.unit.pendidikan.index');

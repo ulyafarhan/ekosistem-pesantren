@@ -19,7 +19,6 @@ class HomepageController extends Controller
     {
         $heroSliders = HeroSlider::where('is_active', true)->orderBy('created_at', 'desc')->get();
 
-        // PERBAIKAN: Tambahkan 'brosur' untuk di-load bersamaan
         $pendaftaranAktif = PeriodePendaftaran::with(['kontakPanitia', 'brosur'])
             ->where('status', 'dibuka')
             ->where('tanggal_buka', '<=', Carbon::now())
@@ -32,12 +31,11 @@ class HomepageController extends Controller
         $galeriTerbaru = Galeri::latest()->take(3)->get();
         $testimonis = Testimoni::where('is_active', true)->latest()->take(3)->get();
         $tokohTerkemuka = TokohSejarah::latest()->take(3)->get();
-
         $statistics = [
-            ['target' => 10, 'label' => 'Tahun Pengalaman', 'suffix' => '+'],
-            ['target' => 1000, 'label' => 'Alumni Berprestasi', 'suffix' => '+'],
-            ['target' => 50, 'label' => 'Tenaga Pendidik', 'suffix' => '+'],
-            ['target' => 95, 'label' => 'Kepuasan Wali Santri', 'suffix' => '%']
+            ['target' => 10, 'display' => '10+', 'label' => 'Tahun Pengalaman'],
+            ['target' => 1000, 'display' => '1000+', 'label' => 'Alumni Berprestasi'],
+            ['target' => 50, 'display' => '50+', 'label' => 'Tenaga Pendidik'],
+            ['target' => 95, 'display' => '95%', 'label' => 'Kepuasan Wali Santri']
         ];
 
         return view('homepage', compact(
