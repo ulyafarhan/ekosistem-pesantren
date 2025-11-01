@@ -10,7 +10,6 @@
         <div class="container mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16 items-center pt-24 pb-20 sm:pt-32 sm:pb-24">
 
-                {{-- Teks sekarang diletakkan pertama di HTML --}}
                 <div class="text-center lg:text-left animasi-scroll fade-in-up lg:order-1">
                     <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
                         Membentuk Karakter Qur'ani, Meraih Masa Depan Gemilang
@@ -22,7 +21,7 @@
                         <a href="#pendaftaran" class="bg-primary-blue text-white font-bold py-4 px-8 rounded-lg hover:bg-primary-blue-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                             Mulai Pendaftaran
                         </a>
-                        <a href="#tentang-kami" class="bg-blue-100 text-primary-blue font-bold py-4 px-8 rounded-lg hover:bg-blue-200 transition-all duration-300">
+                        <a href="#pilar-pendidikan" class="bg-blue-100 text-primary-blue font-bold py-4 px-8 rounded-lg hover:bg-blue-200 transition-all duration-300">
                             Eksplorasi Kami
                         </a>
                     </div>
@@ -40,21 +39,45 @@
     </section>
 
     @if ($pendaftaranAktif)
-    <div id="pendaftaran" class="bg-white relative z-10 -mt-16 max-w-6xl mx-auto rounded-2xl shadow-xl p-6 lg:p-8 border border-gray-200/80 animasi-scroll fade-in-up">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div class="text-center lg:text-left">
-                <h3 class="font-bold text-xl lg:text-2xl text-gray-900">Gerbang Masa Depan Telah Dibuka: Pendaftaran {{ $pendaftaranAktif->tahun_ajaran }}</h3>
-                <p class="text-gray-500 mt-1">Periode Pendaftaran: {{ \Carbon\Carbon::parse($pendaftaranAktif->tanggal_buka)->translatedFormat('d F') }} - {{ \Carbon\Carbon::parse($pendaftaranAktif->tanggal_tutup)->translatedFormat('d F Y') }}</p>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto shrink-0">
-                @if($pendaftaranAktif->brosur)
-                <button @click="showBrosur = true; document.body.style.overflow = 'hidden';" class="w-full text-center border border-primary-blue text-primary-blue font-semibold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
-                    Lihat Brosur Digital
-                </button>
-                @endif
-                <a href="https://wa.me/{{ $pendaftaranAktif->kontakPanitia->first()->nomor_wa ?? '' }}" target="_blank" class="w-full text-center bg-primary-blue text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-blue-dark transition-colors shadow-md hover:shadow-lg">
-                    Hubungi Panitia
-                </a>
+    <div id="pendaftaran"
+        class="relative z-10 -mt-12 sm:-mt-16 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white max-w-3xl sm:max-w-4xl lg:max-w-6xl mx-auto rounded-2xl shadow-lg sm:shadow-xl 
+                    p-6 sm:p-8 lg:p-10 border border-gray-200/80 animasi-scroll fade-in-up">
+            
+            <div class="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
+                <!-- Teks -->
+                <div class="text-center lg:text-left space-y-2">
+                    <h3 class="font-bold text-lg sm:text-xl lg:text-2xl text-gray-900 leading-snug">
+                        Gerbang Masa Depan Telah Dibuka: Pendaftaran {{ $pendaftaranAktif->tahun_ajaran }}
+                    </h3>
+                    <p class="text-gray-500 text-sm sm:text-base">
+                        Periode Pendaftaran:
+                        {{ \Carbon\Carbon::parse($pendaftaranAktif->tanggal_buka)->translatedFormat('d F') }}
+                        -
+                        {{ \Carbon\Carbon::parse($pendaftaranAktif->tanggal_tutup)->translatedFormat('d F Y') }}
+                    </p>
+                </div>
+
+                <!-- Tombol -->
+                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    @if($pendaftaranAktif->brosur)
+                    <button
+                        @click="showBrosur = true; document.body.style.overflow = 'hidden';"
+                        class="w-full sm:w-auto text-center border border-primary-blue text-primary-blue font-semibold 
+                            px-5 py-3 rounded-lg hover:bg-blue-50 active:scale-[0.98] 
+                            transition-all duration-200 ease-out">
+                        Lihat Brosur Digital
+                    </button>
+                    @endif
+
+                    <a href="https://wa.me/{{ $pendaftaranAktif->kontakPanitia->first()->nomor_wa ?? '' }}"
+                    target="_blank"
+                    class="w-full sm:w-auto text-center bg-primary-blue text-white font-semibold 
+                            px-5 py-3 rounded-lg hover:bg-primary-blue-dark active:scale-[0.98] 
+                            transition-all duration-200 ease-out shadow-md hover:shadow-lg">
+                        Hubungi Panitia
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -85,7 +108,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-white">
+    <section id="pilar-pendidikan" class="py-24 bg-white">
         <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
             <div class="text-center max-w-3xl mx-auto animasi-scroll fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Pilar Pendidikan Unggulan Kami</h2>
@@ -137,53 +160,7 @@
     </div>
 </section>
 
-    @if($testimonis->isNotEmpty())
-    <section class="py-24 bg-white mt-12 pt-16">
-        <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-            <div class="text-center max-w-3xl mx-auto animasi-scroll fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Gema Kisah & Kesan Mendalam</h2>
-                <p class="mt-4 text-lg text-gray-600">Dengarkan langsung testimoni dari para alumni, wali santri, dan tokoh masyarakat yang telah merasakan dampak positif dari pendidikan kami.</p>
-            </div>
-            <div x-data="{
-                    testimonis: {{ $testimonis->toJson() }},
-                    active: 0,
-                    autoplay: null,
-                    start() { this.autoplay = setInterval(() => { this.active = (this.active + 1) % this.testimonis.length; }, 5000); },
-                    stop() { clearInterval(this.autoplay); }
-                }" x-init="start()" @mouseenter="stop()" @mouseleave="start()" class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animasi-scroll fade-in-up">
-                <div class="w-full h-80 lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop" alt="Testimoni" class="w-full h-full object-cover">
-                </div>
-                <div class="relative">
-                    <div class="relative min-h-[250px] overflow-hidden">
-                        <template x-for="(item, index) in testimonis" :key="index">
-                            <div x-show="active === index"
-                                x-transition:enter="transition ease-out duration-500 transform" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0"
-                                x-transition:leave="transition ease-in duration-300 transform" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 -translate-x-8"
-                                class="absolute inset-0">
-                                <p class="text-xl lg:text-2xl font-medium leading-relaxed text-gray-800" x-text="`“${item.kutipan}”`"></p>
-                                <div class="flex items-center mt-8">
-                                    <img :src="'/storage/' + item.foto" :alt="item.nama" class="w-16 h-16 rounded-full object-cover shadow-md">
-                                    <div class="ml-4">
-                                        <p class="font-bold text-gray-900 text-lg" x-text="item.nama"></p>
-                                        <p class="text-gray-500" x-text="item.jabatan"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                    <div class="flex space-x-3 mt-8">
-                        <template x-for="(item, index) in testimonis" :key="index">
-                            <button @click="active = index; stop(); start();" 
-                                    :class="{ 'bg-primary-blue w-6': active === index, 'bg-gray-300 w-2.5': active !== index }" 
-                                    class="h-2.5 rounded-full hover:bg-primary-blue/70 transition-all duration-300"></button>
-                        </template>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
+    <livewire:testimoni-slider />
     
     <section class="py-24">
         <div class="container mx-auto px-6 lg:px-8 max-w-7xl">

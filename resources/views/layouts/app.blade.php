@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+    @livewireStyles
     <style>
         body { font-family: 'Manrope', sans-serif; background-color: #F9FAFB; }
         .text-primary-blue { color: #2563EB; }
@@ -39,13 +39,19 @@
 </head>
 <body class="text-gray-800">
 
-    @include('layouts.header')
+    @persist('header')
+        @include('layouts.header')
+    @endpersist
 
     <main id="main-content">
         @yield('content')
     </main>
 
-    @include('layouts.footer')
+    @persist('footer')
+        @include('layouts.footer')
+    @endpersist
+
+    @livewireScripts
 
     @stack('scripts')
 </body>

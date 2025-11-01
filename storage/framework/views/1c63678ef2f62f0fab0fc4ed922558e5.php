@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
-    
+    <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
+
     <style>
         body { font-family: 'Manrope', sans-serif; background-color: #F9FAFB; }
         .text-primary-blue { color: #2563EB; }
@@ -39,13 +40,20 @@
 </head>
 <body class="text-gray-800">
 
-    <?php echo $__env->make('layouts.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php app("livewire")->forceAssetInjection(); ?><div x-persist="<?php echo e('header'); ?>">
+        <?php echo $__env->make('layouts.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    </div>
 
     <main id="main-content">
         <?php echo $__env->yieldContent('content'); ?>
     </main>
 
-    <?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php app("livewire")->forceAssetInjection(); ?><div x-persist="<?php echo e('footer'); ?>">
+        <?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    </div>
+
+    <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
+
 
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
