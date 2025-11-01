@@ -10,12 +10,17 @@
         </div>
 
         <?php if($tokohs->isNotEmpty()): ?>
-        <section id="tokoh" class="mb-20">
+        <section id="tokoh" class="mb-20" x-data="{ showAll: false }">
             <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center animasi-scroll fade-in-up">Para Tokoh & Pimpinan Terdahulu</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <?php $__currentLoopData = $tokohs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tokoh): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="bg-white rounded-xl border border-gray-200/80 p-6 text-center flex flex-col items-center shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 animasi-scroll fade-in-up"
-                         style="transition-delay: <?php echo e(($index % 4) * 100); ?>ms;">
+                    <div class="bg-white rounded-xl border border-gray-200/80 p-6 text-center flex flex-col items-center shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+                         x-show="showAll || <?php echo e($index); ?> < 6"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 transform scale-90"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         x-cloak
+                    >
                         <img src="<?php echo e($tokoh->foto ? asset('storage/' . $tokoh->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($tokoh->nama_lengkap) . '&color=FFFFFF&background=2563EB&bold=true&size=128'); ?>" 
                              alt="<?php echo e($tokoh->nama_lengkap); ?>" 
                              class="w-32 h-32 rounded-full mx-auto mb-5 object-cover shadow-lg ring-4 ring-white">
@@ -24,6 +29,16 @@
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
+
+            <?php if(count($tokohs) > 6): ?>
+            <div class="text-center mt-12" x-show="!showAll" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+                <button 
+                    @click="showAll = true"
+                    class="bg-primary-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-primary-blue-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Lihat Semua Tokoh
+                </button>
+            </div>
+            <?php endif; ?>
         </section>
         <?php endif; ?>
         
@@ -48,7 +63,6 @@
             </section>
             <?php endif; ?>
 
-            
             <?php if(!$sejarahSmp && !$sejarahSma && $tokohs->isEmpty()): ?>
                 <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-24 bg-white rounded-xl border border-dashed border-gray-300 animasi-scroll fade-in-up">
                      <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -75,7 +89,7 @@
                 }
             });
         }, { 
-            threshold: 0.1 // Sedikit lebih cepat muncul
+            threshold: 0.1
         });
 
         const elementsToAnimate = document.querySelectorAll('.animasi-scroll');

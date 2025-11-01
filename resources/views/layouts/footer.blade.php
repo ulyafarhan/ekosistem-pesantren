@@ -30,8 +30,6 @@
                             class="hover:text-white transition-colors duration-300">Sejarah</a></li>
                     <li><a href="{{ route('pengurus.index') }}"
                             class="hover:text-white transition-colors duration-300">Struktur Pengurus</a></li>
-                    <li><a href="{{ route('sejarah.unit.pendidikan.index') }}"
-                            class="hover:text-white transition-colors duration-300">Sejarah Pendidikan</a></li>
                 </ul>
             </div>
 

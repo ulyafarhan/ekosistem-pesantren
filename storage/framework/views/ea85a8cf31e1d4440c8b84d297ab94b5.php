@@ -42,8 +42,6 @@
                         <a href="<?php echo e(route('tokoh.sejarah.index')); ?>" wire:navigate
                             class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Tokoh
                             Sejarah</a>
-                        <a href="<?php echo e(route('sejarah.unit.pendidikan.index')); ?>" wire:navigate
-                            class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Sejarah Pendidikan</a>
                     </div>
                 </div>
                 <a href="#kontak"  class="hover:text-primary-blue transition-colors">Kontak</a>
@@ -102,8 +100,6 @@
                         class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Struktur Pengurus</a>
                     <a href="<?php echo e(route('tokoh.sejarah.index')); ?>" wire:navigate
                         class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Tokoh Sejarah</a>
-                    <a href="<?php echo e(route('sejarah.unit.pendidikan.index')); ?>" wire:navigate
-                        class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Sejarah Pendidikan</a>
                 </div>
             </div>
 
