@@ -16,9 +16,11 @@ class SejarahPendidikanPage extends Component
 
     public function mount()
     {
+        // Ambil SATU baris terbaru
         $sejarah = SejarahUnitPendidikan::latest()->first();
 
         if ($sejarah) {
+            // Tetapkan properti dari baris tunggal tersebut
             $this->sejarahSmp = $sejarah->sejarah_smp;
             $this->sejarahSma = $sejarah->sejarah_sma;
         }
@@ -26,6 +28,7 @@ class SejarahPendidikanPage extends Component
 
     public function render()
     {
+        // View akan secara otomatis menggunakan properti public $sejarahSmp dan $sejarahSma
         return view('livewire.sejarah-pendidikan-page');
     }
 }
