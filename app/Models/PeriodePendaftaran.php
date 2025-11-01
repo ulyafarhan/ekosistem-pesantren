@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
+
 class PeriodePendaftaran extends Model
 {
     /** @use HasFactory<\Database\Factories\PeriodePendaftaranFactory> */

@@ -17,7 +17,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 @foreach ($tokohs as $index => $tokoh)
                     <div class="bg-white rounded-xl border border-gray-200/80 p-6 text-center flex flex-col items-center shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
-                         x-show="showAll || {{ $index }} < 6"
+                         x-show="showAll || {{ $index }} < 4"
                          x-transition:enter="transition ease-out duration-300"
                          x-transition:enter-start="opacity-0 transform scale-90"
                          x-transition:enter-end="opacity-100 transform scale-100"
@@ -32,7 +32,7 @@
                 @endforeach
             </div>
 
-            @if(count($tokohs) > 6)
+            @if(count($tokohs) > 4)
             <div class="text-center mt-12" x-show="!showAll" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
                 <button 
                     @click="showAll = true"
@@ -48,8 +48,13 @@
             @if($sejarahSmp)
             <section id="sejarah-smp" class="bg-white p-8 md:p-12 rounded-2xl border border-gray-200/80 shadow-lg animasi-scroll fade-in-up">
                 <h2 class="text-3xl font-bold text-gray-900 mb-6">Jejak Langkah: Berdirinya SMP Pesantren Pusat</h2>
-                <div class="prose max-w-none prose-lg text-gray-600 leading-relaxed">
-                    {!! $sejarahSmp->sejarah_smp !!}
+                <div class="text-gray-600 leading-relaxed text-lg">
+                    <p>{{ Str::limit(strip_tags($sejarahSmp->sejarah_smp), 250) }}</p>
+                </div>
+                <div class="mt-6">
+                    <a href="{{ route('sejarah.show', 'smp') }}" class="inline-block bg-primary-blue text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-blue-dark transition-colors">
+                        Baca Selengkapnya
+                    </a>
                 </div>
             </section>
             @endif
@@ -57,8 +62,13 @@
             @if($sejarahSma)
             <section id="sejarah-sma" class="bg-white p-8 md:p-12 rounded-2xl border border-gray-200/80 shadow-lg animasi-scroll fade-in-up">
                 <h2 class="text-3xl font-bold text-gray-900 mb-6">Tonggak Sejarah: Berdirinya SMA Pesantren Pusat</h2>
-                <div class="prose max-w-none prose-lg text-gray-600 leading-relaxed">
-                    {!! $sejarahSma->sejarah_sma !!}
+                <div class="text-gray-600 leading-relaxed text-lg">
+                    <p>{{ Str::limit(strip_tags($sejarahSma->sejarah_sma), 250) }}</p>
+                </div>
+                 <div class="mt-6">
+                    <a href="{{ route('sejarah.show', 'sma') }}" class="inline-block bg-primary-blue text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-blue-dark transition-colors">
+                        Baca Selengkapnya
+                    </a>
                 </div>
             </section>
             @endif

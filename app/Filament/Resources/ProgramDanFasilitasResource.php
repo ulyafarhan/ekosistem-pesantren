@@ -20,6 +20,7 @@ class ProgramDanFasilitasResource extends Resource
     protected static ?string $model = ProgramDanFasilitas::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'Akademik & Pendaftaran';
 
     protected static ?string $pluralModelLabel = 'Program dan Fasilitas';
     protected static ?string $modelLabel = 'Program dan Fasilitas';

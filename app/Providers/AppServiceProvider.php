@@ -10,6 +10,8 @@ use App\Models\ProgramDanFasilitas;
 use App\Models\TokohSejarah;
 use App\Observers\ImageProcessingObserver;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +34,19 @@ class AppServiceProvider extends ServiceProvider
         TokohSejarah::observe(ImageProcessingObserver::class);
         ProgramDanFasilitas::observe(ImageProcessingObserver::class);
         HeroSlider::observe(ImageProcessingObserver::class);
+
+        View::composer('layouts.header', function ($view) {
+            $view->with('isHome', Request::routeIs('homepage'));
+            $view->with('isProgram', Request::routeIs('program.index'));
+            $view->with('isBerita', Request::routeIs('berita.*'));
+            $view->with('isGaleri', Request::routeIs('galeri.index'));
+            
+            $isTentang = Request::routeIs([
+                'pengurus.index', 
+                'tokoh.sejarah.index', 
+                'sejarah.show'
+            ]);
+            $view->with('isTentang', $isTentang);
+        });
     }
 }

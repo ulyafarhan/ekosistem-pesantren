@@ -16,6 +16,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+
 use App\Filament\Resources\PeriodePendaftaranResource\RelationManagers\KontakPanitiaRelationManager;
 
 class PeriodePendaftaranResource extends Resource
@@ -23,6 +24,7 @@ class PeriodePendaftaranResource extends Resource
     protected static ?string $model = PeriodePendaftaran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar';
+    protected static ?string $navigationGroup = 'Akademik & Pendaftaran';
 
     protected static ?string $pluralModelLabel = 'Periode Pendaftaran';
     protected static ?string $modelLabel = 'Periode Pendaftaran';

@@ -8,11 +8,13 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "3.3",
+        "flowframe/laravel-trend": "^0.4.0",
         "hotwired/turbo-laravel": "^2.4",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "^3.6",
         "malzariey/filament-lexical-editor": "^1.1",
+        "ralphjsmit/laravel-filament-seo": "^1.5",
         "spatie/laravel-image-optimizer": "^1.8"
     },
     "require-dev": {

@@ -20,6 +20,7 @@ class PengurusResource extends Resource
     protected static ?string $model = Pengurus::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationGroup = 'Sejarah & Struktur';
 
     protected static ?string $pluralModelLabel = 'Pengurus';
     protected static ?string $modelLabel = 'Pengurus';

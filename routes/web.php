@@ -6,7 +6,6 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\ProgramFasilitasController;
 use App\Http\Controllers\TokohSejarahController; 
-use App\Livewire\SejarahPendidikanPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');

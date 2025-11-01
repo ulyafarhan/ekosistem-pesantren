@@ -18,6 +18,7 @@ class TokohSejarahResource extends Resource
     protected static ?string $model = TokohSejarah::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationGroup = 'Sejarah & Struktur';
 
     protected static ?string $pluralModelLabel = 'Tokoh Sejarah';
     protected static ?string $modelLabel = 'Tokoh Sejarah';

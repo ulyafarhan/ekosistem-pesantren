@@ -25,17 +25,17 @@
                     </div>
                 </div>
 
-                
                 <div class="w-full max-w-lg mx-auto lg:max-w-none h-[300px] sm:h-[400px] lg:h-[550px] mt-16 lg:mt-0 animasi-scroll fade-in-up lg:order-2">
                     <?php
-                        $heroImage = $heroSliders->isNotEmpty() ? asset('storage/' . $heroSliders->first()->gambar) : 'https://images.unsplash.com/photo-1594799385012-ce00b234952f?q=80&w=2070&auto-format&fit=crop';
+                        $heroGambar = $heroSliders->isNotEmpty() ? $heroSliders->first()->gambar : null;
+                        $heroImage = $heroGambar ? asset('storage/' . $heroGambar) : 'https://images.unsplash.com/photo-1594799385012-ce00b234952f?q=80&w=2070&auto-format&fit=crop';
                     ?>
                     <div class="h-full w-full rounded-3xl bg-cover bg-center shadow-2xl" style="background-image: url('<?php echo e($heroImage); ?>')"></div>
                 </div> 
             </div>
         </div>
     </section>
-
+    
     <?php if($pendaftaranAktif): ?>
     <div id="pendaftaran"
         class="relative z-10 -mt-12 sm:-mt-16 px-4 sm:px-6 lg:px-8">

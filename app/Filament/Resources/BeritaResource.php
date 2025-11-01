@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use RalphJSmit\Filament\SEO\SEO;
 
 use Illuminate\Support\Str;
 
@@ -20,6 +21,7 @@ class BeritaResource extends Resource
     protected static ?string $model = Berita::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationGroup = 'Manajemen Konten';
     
     protected static ?string $pluralModelLabel = 'Berita';
     protected static ?string $modelLabel = 'Berita';

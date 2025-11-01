@@ -11,11 +11,13 @@ use Filament\Tables\Table;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 
+
 class SejarahUnitPendidikanResource extends Resource
 {
     protected static ?string $model = SejarahUnitPendidikan::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-archive-box';
+    protected static ?string $navigationGroup = 'Sejarah & Struktur';
 
     protected static ?string $pluralModelLabel = 'Sejarah Unit Pendidikan';
     protected static ?string $modelLabel = 'Sejarah Unit Pendidikan';

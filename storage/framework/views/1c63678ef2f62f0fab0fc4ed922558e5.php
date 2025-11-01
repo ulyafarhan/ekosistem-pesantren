@@ -17,7 +17,7 @@
         body { font-family: 'Manrope', sans-serif; background-color: #F9FAFB; }
         .text-primary-blue { color: #2563EB; }
         .bg-primary-blue { background-color: #2563EB; }
-        .hover\:bg-primary-blue-dark:hover { background-color: #1D4ED8; }
+        .hover:bg-primary-blue-dark:hover { background-color: #1D4ED8; }
         .active-nav-link { color: #2563EB; position: relative; }
         .active-nav-link::after { content: ''; display: block; width: 6px; height: 6px; background-color: #2563EB; border-radius: 50%; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
         .prose h1, .prose h2, .prose h3 { font-weight: 800; color: #111827; }
@@ -56,5 +56,10 @@
 
 
     <?php echo $__env->yieldPushContent('scripts'); ?>
+    <script>
+        document.addEventListener('livewire:navigated', () => {
+            window.dispatchEvent(new Event('close-menus'));
+        });
+    </script>
 </body>
 </html><?php /**PATH C:\laragon\www\ekosistem-pesantren\resources\views/layouts/app.blade.php ENDPATH**/ ?>

@@ -1,1 +1,0 @@
-<?php /**PATH C:\laragon\www\ekosistem-pesantren\resources\views/sejarah/index.blade.php ENDPATH**/ ?>

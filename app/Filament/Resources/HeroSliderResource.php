@@ -14,6 +14,7 @@ class HeroSliderResource extends Resource
     protected static ?string $model = HeroSlider::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Manajemen Konten';
     protected static ?string $navigationLabel = 'Hero Slider';
 
     public static function form(Form $form): Form

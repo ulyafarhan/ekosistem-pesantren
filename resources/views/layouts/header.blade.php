@@ -1,5 +1,6 @@
 <header x-data="{ mobileMenuOpen: false, aboutDropdownOpen: false }"
     @keydown.escape.window="mobileMenuOpen = false; aboutDropdownOpen = false"
+    x-init="window.addEventListener('close-menus', () => { mobileMenuOpen = false; aboutDropdownOpen = false })"
     class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200/80 transition-all duration-300">
     <nav class="container mx-auto px-6 py-4 max-w-7xl">
         <div class="flex items-center justify-between">
@@ -10,15 +11,16 @@
 
             <div class="hidden lg:flex items-center gap-x-8 text-gray-600 font-semibold">
                 <a href="{{ route('homepage') }}" wire:navigate
-                    class="hover:text-primary-blue transition-colors @if (request()->routeIs('homepage')) active-nav-link @endif">Home</a>
+                    class="hover:text-primary-blue transition-colors @if ($isHome) active-nav-link @endif">Home</a>
                 <a href="{{ route('program.index') }}" wire:navigate
-                    class="hover:text-primary-blue transition-colors @if (request()->routeIs('program.index')) active-nav-link @endif">Program</a>
+                    class="hover:text-primary-blue transition-colors @if ($isProgram) active-nav-link @endif">Program</a>
                 <a href="{{ route('berita.index') }}" wire:navigate
-                    class="hover:text-primary-blue transition-colors @if (request()->routeIs('berita.*')) active-nav-link @endif">Berita</a>
+                    class="hover:text-primary-blue transition-colors @if ($isBerita) active-nav-link @endif">Berita</a>
                 <a href="{{ route('galeri.index') }}" wire:navigate
-                    class="hover:text-primary-blue transition-colors @if (request()->routeIs('galeri.index')) active-nav-link @endif">Galeri</a>
+                    class="hover:text-primary-blue transition-colors @if ($isGaleri) active-nav-link @endif">Galeri</a>
+                
                 <div @mouseenter="aboutDropdownOpen = true" @mouseleave="aboutDropdownOpen = false" class="relative">
-                    <button class="flex items-center gap-1 hover:text-primary-blue transition-colors">
+                    <button class="flex items-center gap-1 hover:text-primary-blue transition-colors @if ($isTentang) active-nav-link @endif">
                         Tentang Kami
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                             class="w-5 h-5 transition-transform duration-300"
@@ -40,22 +42,21 @@
                             class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Struktur
                             Pengurus</a>
                         <a href="{{ route('tokoh.sejarah.index') }}" wire:navigate
-                            class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Tokoh
-                            Sejarah</a>
+                            class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Tokoh Dan Sejarah</a>
                     </div>
                 </div>
-                <a href="#kontak"  class="hover:text-primary-blue transition-colors">Kontak</a>
+                <a href="#kontak" class="hover:text-primary-blue transition-colors">Kontak</a>
             </div>
 
             <div class="hidden lg:block">
-                <a href="/admin" wire:navigate
+                <a href="/admin"
                     class="bg-primary-blue text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-primary-blue-dark transition-colors shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
                     Login Admin
                 </a>
             </div>
 
-            <div  class="lg:hidden"> 
-                <button @click="mobileMenuOpen = !mobileMenuOpen" wire:navigate class="text-gray-900">
+            <div class="lg:hidden"> 
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -66,27 +67,26 @@
         </div>
     </nav>
 
-    <div x-show="mobileMenuOpen" x-cloak  class="lg:hidden"
+    <div x-show="mobileMenuOpen" x-cloak class="lg:hidden"
         x-transition:enter="transition ease-out duration-300 transform"
         x-transition:enter-start="opacity-0 -translate-y-4"
         x-transition:enter-end="opacity-100 translate-y-0"
         x-transition:leave="transition ease-in duration-200 transform"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4">
-        <div  class="p-6 space-y-3 border-t border-gray-200/80">
-            <a href="{{ route('homepage') }}" wire:navigate
+        <div class="p-6 space-y-3 border-t border-gray-200/80">
+            <a href="{{ route('homepage') }}" wire:navigate @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Home</a>
-            <a href="{{ route('program.index') }}" wire:navigate
+            <a href="{{ route('program.index') }}" wire:navigate @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Program</a>
-            <a href="{{ route('berita.index') }}" wire:navigate
+            <a href="{{ route('berita.index') }}" wire:navigate @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Berita</a>
-            <a href="{{ route('galeri.index') }}" wire:navigate
+            <a href="{{ route('galeri.index') }}" wire:navigate @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Galeri</a>
 
             <div x-data="{ aboutMobileOpen: false }">
                 <button @click="aboutMobileOpen = !aboutMobileOpen" 
-                    wire:navigate
-                    class="w-full flex justify-between items-center px-4 py-2 rounded-md font-semibold hover:bg-gray-100">
+                        class="w-full flex justify-between items-center px-4 py-2 rounded-md font-semibold hover:bg-gray-100">
                     Tentang Kami
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" 
                         class="w-5 h-5 transition-transform duration-300" :class="{ 'rotate-180': aboutMobileOpen }">
@@ -96,17 +96,17 @@
                     </svg>
                 </button>
                 <div x-show="aboutMobileOpen" x-cloak class="pl-6 mt-2 space-y-2">
-                    <a href="{{ route('pengurus.index') }}" wire:navigate
+                    <a href="{{ route('pengurus.index') }}" wire:navigate @click="mobileMenuOpen = false"
                         class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Struktur Pengurus</a>
-                    <a href="{{ route('tokoh.sejarah.index') }}" wire:navigate
-                        class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Tokoh Sejarah</a>
+                    <a href="{{ route('tokoh.sejarah.index') }}" wire:navigate @click="mobileMenuOpen = false"
+                        class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Tokoh Dan Sejarah</a>
                 </div>
             </div>
 
-            <a href="#kontak" @click="mobileMenuOpen = false" wire:navigate
+            <a href="#kontak" @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Kontak</a>
 
-            <a href="/admin" @click="mobileMenuOpen = false" wire:navigate
+            <a href="/admin" @click="mobileMenuOpen = false"
                 class="block w-full text-center bg-primary-blue text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-blue-dark transition-colors">
                 Login Admin
             </a>
