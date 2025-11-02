@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('program_pendidikan')->nullable();
             $table->longText('fasilitas')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

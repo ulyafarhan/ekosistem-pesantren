@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
 
 class ProgramDanFasilitasResource extends Resource
 {
@@ -29,12 +30,24 @@ class ProgramDanFasilitasResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                RichEditor::make('program_pendidikan')
-                    ->columnSpanFull(),
-                RichEditor::make('fasilitas')
-                    ->columnSpanFull(),
-            ]);
+        ->schema([
+            RichEditor::make('program_pendidikan')
+                ->columnSpanFull(),
+            RichEditor::make('fasilitas')
+                ->columnSpanFull(),
+            FileUpload::make('gambar')
+                ->label('Gambar Utama Program')
+                ->image()
+                ->directory('program-fasilitas')
+                ->columnSpanFull()
+                ->nullable(),            
+            FileUpload::make('gambar_fasilitas')
+                ->label('Gambar Utama Fasilitas')
+                ->image()
+                ->directory('program-fasilitas') 
+                ->columnSpanFull()
+                ->nullable(),
+        ]);
     }
 
     public static function table(Table $table): Table

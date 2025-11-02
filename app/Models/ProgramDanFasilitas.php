@@ -12,6 +12,7 @@ class ProgramDanFasilitas extends Model
     protected $fillable = [
         'program_pendidikan',
         'fasilitas',
+        'gambar',
+        'gambar_fasilitas',
     ];
-    //
 }

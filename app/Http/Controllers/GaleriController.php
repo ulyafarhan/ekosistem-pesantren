@@ -9,7 +9,7 @@ class GaleriController extends Controller
 {
     public function index()
     {
-        $galeris = Galeri::latest()->paginate(12);
+        $galeris = Galeri::paginate(12);
         return view('galeri.index', compact('galeris'));
     }
 }

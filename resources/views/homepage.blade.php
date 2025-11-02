@@ -6,37 +6,109 @@
 @section('content')
 <div x-data="{ showBrosur: false }">
 
-    <section class="relative bg-white pt-1 mt-[-100px]">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16 items-center pt-24 pb-20 sm:pt-32 sm:pb-24">
+    @if($heroSliders->isNotEmpty())
+        <section class="relative bg-white pt-1 mt-[-100px]"
+                x-data="{ activeSlide: 1, slideCount: {{ count($heroSliders) }} }"
+                x-init="
+                    if (slideCount > 1) {
+                        let timer = setInterval(() => {
+                            activeSlide = (activeSlide % slideCount) + 1;
+                        }, 5000); // 5000ms = 5 detik
 
-                <div class="text-center lg:text-left animasi-scroll fade-in-up lg:order-1">
-                    <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-                        Membentuk Karakter Qur'ani, Meraih Masa Depan Gemilang
-                    </h1>
-                    <p class="mt-6 max-w-xl mx-auto lg:mx-0 text-lg lg:text-xl text-gray-600">
-                        Kami mengintegrasikan keunggulan akademik dengan nilai-nilai Islam yang luhur untuk melahirkan generasi pemimpin yang siap menjawab tantangan zaman.
-                    </p>
-                    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#pendaftaran" class="bg-primary-blue text-white font-bold py-4 px-8 rounded-lg hover:bg-primary-blue-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            Mulai Pendaftaran
-                        </a>
-                        <a href="#pilar-pendidikan" class="bg-blue-100 text-primary-blue font-bold py-4 px-8 rounded-lg hover:bg-blue-200 transition-all duration-300">
-                            Eksplorasi Kami
-                        </a>
+                        // Opsional: Reset timer jika pengguna klik dot
+                        $watch('activeSlide', () => {
+                            clearInterval(timer);
+                            timer = setInterval(() => {
+                                activeSlide = (activeSlide % slideCount) + 1;
+                            }, 5000);
+                        });
+                    }
+                ">
+            <div class="container mx-auto px-6 lg:px-8 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16 items-center pt-24 pb-28 sm:pt-32 sm:pb-32"> {{-- Tambah padding bawah untuk dots --}}
+
+                    <div class="text-center lg:text-left animasi-scroll fade-in-up lg:order-1">
+                        <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                            Membentuk Karakter Qur'ani, Meraih Masa Depan Gemilang
+                        </h1>
+                        <p class="mt-6 max-w-xl mx-auto lg:mx-0 text-lg lg:text-xl text-gray-600">
+                            Kami mengintegrasikan keunggulan akademik dengan nilai-nilai Islam yang luhur untuk melahirkan generasi pemimpin yang siap menjawab tantangan zaman.
+                        </p>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#pendaftaran" class="bg-primary-blue text-white font-bold py-4 px-8 rounded-lg hover:bg-primary-blue-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                Mulai Pendaftaran
+                            </a>
+                            <a href="#pilar-pendidikan" class="bg-blue-100 text-primary-blue font-bold py-4 px-8 rounded-lg hover:bg-blue-200 transition-all duration-300">
+                                Eksplorasi Kami
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="w-full max-w-lg mx-auto lg:max-w-none h-[300px] sm:h-[400px] lg:h-[550px] mt-16 lg:mt-0 animasi-scroll fade-in-up lg:order-2">
-                    @php
-                        $heroGambar = $heroSliders->isNotEmpty() ? $heroSliders->first()->gambar : null;
-                        $heroImage = $heroGambar ? asset('storage/' . $heroGambar) : 'https://images.unsplash.com/photo-1594799385012-ce00b234952f?q=80&w=2070&auto-format&fit=crop';
-                    @endphp
-                    <div class="h-full w-full rounded-3xl bg-cover bg-center shadow-2xl" style="background-image: url('{{ $heroImage }}')"></div>
-                </div> 
+                    <div class="relative w-full max-w-lg mx-auto lg:max-w-none h-[300px] sm:h-[400px] lg:h-[550px] mt-16 lg:mt-0 lg:order-2">
+                        @foreach ($heroSliders as $index => $slider)
+                            @php
+                                $heroImage = $slider->gambar ? asset('storage/' . $slider->gambar) : 'https://images.unsplash.com/photo-1594799385012-ce00b234952f?q=80&w=2070&auto-format&fit-crop';
+                            @endphp
+                            <div x-show="activeSlide === {{ $index + 1 }}"
+                                x-transition:enter="transition ease-out duration-700"
+                                x-transition:enter-start="opacity-0 scale-95"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300 absolute inset-0"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-95"
+                                class="absolute inset-0 h-full w-full rounded-3xl bg-cover bg-center shadow-2xl"
+                                style="background-image: url('{{ $heroImage }}')" x-cloak>
+                            </div>
+                        @endforeach
+                        {{-- Navigasi (Dots) --}}
+                        @if(count($heroSliders) > 1)
+                            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex space-x-3">
+                                @foreach ($heroSliders as $index => $slider)
+                                    <button @click="activeSlide = {{ $index + 1 }}"
+                                            :class="activeSlide === {{ $index + 1 }} ? 'bg-primary-blue scale-125' : 'bg-gray-300'"
+                                            class="w-3 h-3 rounded-full hover:bg-primary-blue-dark transition-all duration-300"></button>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div> 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @else
+        {{-- Fallback jika tidak ada slider: Tampilkan hero statis asli Anda --}}
+        <section class="relative bg-white pt-1 mt-[-100px]">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16 items-center pt-24 pb-20 sm:pt-32 sm:pb-24">
+
+                    <div class="text-center lg:text-left animasi-scroll fade-in-up lg:order-1">
+                        <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                            Membentuk Karakter Qur'ani, Meraih Masa Depan Gemilang
+                        </h1>
+                        <p class="mt-6 max-w-xl mx-auto lg:mx-0 text-lg lg:text-xl text-gray-600">
+                            Kami mengintegrasikan keunggulan akademik dengan nilai-nilai Islam yang luhur untuk melahirkan generasi pemimpin yang siap menjawab tantangan zaman.
+                        </p>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#pendaftaran" class="bg-primary-blue ...">
+                                Mulai Pendaftaran
+                            </a>
+                            <a href="#pilar-pendidikan" class="bg-blue-100 ...">
+                                Eksplorasi Kami
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-lg mx-auto lg:max-w-none h-[300px] sm:h-[400px] lg:h-[550px] mt-16 lg:mt-0 animasi-scroll fade-in-up lg:order-2">
+                        @php
+                            // Kode fallback asli Anda
+                            $heroGambar = null; 
+                            $heroImage = 'https://images.unsplash.com/photo-1594799385012-ce00b234952f?q=80&w=2070&auto-format&fit-crop';
+                        @endphp
+                        <div class="h-full w-full rounded-3xl bg-cover bg-center shadow-2xl" style="background-image: url('{{ $heroImage }}')"></div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+    @endif
     
     @if ($pendaftaranAktif)
     <div id="pendaftaran"

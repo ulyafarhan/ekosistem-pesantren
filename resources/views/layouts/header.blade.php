@@ -10,13 +10,13 @@
             </a>
 
             <div class="hidden lg:flex items-center gap-x-8 text-gray-600 font-semibold">
-                <a href="{{ route('homepage') }}" wire:navigate
+                <a href="{{ route('homepage') }}" 
                     class="hover:text-primary-blue transition-colors @if ($isHome) active-nav-link @endif">Home</a>
-                <a href="{{ route('program.index') }}" wire:navigate
+                <a href="{{ route('program.index') }}" 
                     class="hover:text-primary-blue transition-colors @if ($isProgram) active-nav-link @endif">Program</a>
-                <a href="{{ route('berita.index') }}" wire:navigate
+                <a href="{{ route('berita.index') }}"
                     class="hover:text-primary-blue transition-colors @if ($isBerita) active-nav-link @endif">Berita</a>
-                <a href="{{ route('galeri.index') }}" wire:navigate
+                <a href="{{ route('galeri.index') }}" 
                     class="hover:text-primary-blue transition-colors @if ($isGaleri) active-nav-link @endif">Galeri</a>
                 
                 <div @mouseenter="aboutDropdownOpen = true" @mouseleave="aboutDropdownOpen = false" class="relative">
@@ -38,10 +38,10 @@
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-2"
                         class="absolute top-full mt-3 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                        <a href="{{ route('pengurus.index') }}" wire:navigate
+                        <a href="{{ route('pengurus.index') }}"
                             class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Struktur
                             Pengurus</a>
-                        <a href="{{ route('tokoh.sejarah.index') }}" wire:navigate
+                        <a href="{{ route('tokoh.sejarah.index') }}"
                             class="block px-5 py-3 text-gray-800 hover:bg-gray-50 hover:text-primary-blue transition-colors">Tokoh Dan Sejarah</a>
                     </div>
                 </div>
@@ -75,13 +75,13 @@
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4">
         <div class="p-6 space-y-3 border-t border-gray-200/80">
-            <a href="{{ route('homepage') }}" wire:navigate @click="mobileMenuOpen = false"
+            <a href="{{ route('homepage') }}" @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Home</a>
-            <a href="{{ route('program.index') }}" wire:navigate @click="mobileMenuOpen = false"
+            <a href="{{ route('program.index') }}" @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Program</a>
-            <a href="{{ route('berita.index') }}" wire:navigate @click="mobileMenuOpen = false"
+            <a href="{{ route('berita.index') }}" @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Berita</a>
-            <a href="{{ route('galeri.index') }}" wire:navigate @click="mobileMenuOpen = false"
+            <a href="{{ route('galeri.index') }}" @click="mobileMenuOpen = false"
                 class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Galeri</a>
 
             <div x-data="{ aboutMobileOpen: false }">
@@ -96,9 +96,9 @@
                     </svg>
                 </button>
                 <div x-show="aboutMobileOpen" x-cloak class="pl-6 mt-2 space-y-2">
-                    <a href="{{ route('pengurus.index') }}" wire:navigate @click="mobileMenuOpen = false"
+                    <a href="{{ route('pengurus.index') }}" @click="mobileMenuOpen = false"
                         class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Struktur Pengurus</a>
-                    <a href="{{ route('tokoh.sejarah.index') }}" wire:navigate @click="mobileMenuOpen = false"
+                    <a href="{{ route('tokoh.sejarah.index') }}" @click="mobileMenuOpen = false"
                         class="block px-4 py-2 rounded-md font-semibold hover:bg-gray-100">Tokoh Dan Sejarah</a>
                 </div>
             </div>

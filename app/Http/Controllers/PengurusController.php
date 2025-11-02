@@ -9,7 +9,7 @@ class PengurusController extends Controller
 {
     public function index()
     {
-        $pengurus = Pengurus::latest()->get();
+        $pengurus = Pengurus::paginate(12);
         return view('pengurus.index', compact('pengurus'));
     }
 }

@@ -17,7 +17,8 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        $heroSliders = HeroSlider::where('is_active', true)->orderBy('created_at', 'desc')->get();
+        // Ambil 5 slider aktif terbaru
+        $heroSliders = HeroSlider::where('is_active', true)->latest()->take(5)->get();
 
         $pendaftaranAktif = PeriodePendaftaran::with(['kontakPanitia', 'brosur'])
             ->where('status', 'dibuka')
